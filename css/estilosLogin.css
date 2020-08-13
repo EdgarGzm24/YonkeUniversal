@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(../img/mecanicoFondo.jpg) no-repeat center top;
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+
+.logo {
+    line-height: 200%;
+    position: fixed;
+    margin-top: .5%;
+    margin-left: 3%;
+}
+
+nav {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;   
+}
+
+nav ul {
+    line-height: 550%;
+    list-style: none;
+    overflow: hidden;
+    color: #fff;
+    text-align: right;
+    transition: 1s;
+    background: rgba(0,0,0,.6);
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    font-family: 'Comfortaa Bold', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 120%;
+}
+.menu img {
+   margin-right: 2%; 
+}
+.menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+/*=====================Inicio de sesion==================*/
+.login-box {
+  width: 320px;
+  height: 420px;
+  background: #000;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 50px 30px;
+  border-radius: 3%;
+}
+
+.login-box h1 {
+  margin: 0;
+  padding: 0 0 50px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-box label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #F02B2B;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #F02B2B;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #F02B2B;
+  color: #fff;
+}
+
+.login-box a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.login-box a:hover {
+  color: #fff;
+}
