@@ -4,7 +4,7 @@ session_start();
 $usuario = $_SESSION['user'];
 
 if(!isset($usuario)){
-    header("location: Index.php");
+    header("location: ../Index.php");
 }
 
 ?>
@@ -27,6 +27,7 @@ if(!isset($usuario)){
     <link rel="stylesheet" href="assets/css/estilosSubir.css">
     <!--===============================================================================================-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    
 </head>
 
 <body>
@@ -37,7 +38,7 @@ if(!isset($usuario)){
             <ul class="nav navbar-nav">
                 <li class="menu-title">Elementos productos</li><!-- /.menu-title -->
                 <li class="menu-item">
-                    <a href="../admin/VerProductos.php"><i class="menu-icon fas fa-car"></i>Productos </a>
+                    <a href="../admin/"><i class="menu-icon fas fa-car"></i>Productos </a>
                 </li>
                 <li class="active">
                     <a href="../admin/CrearProductos.php"><i class="menu-icon fas fa-plus"></i>Crear </a>
@@ -85,60 +86,111 @@ if(!isset($usuario)){
     <!-- Content -->
     <div class="content">
         <!-- Animated -->
-        <div class="animated fadeIn">
-            <!-- Orders -->
-            <div class="orders">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="box-title">Subir autos </h4>
-                            </div>
-                            <div class="card-body">
-                                    <form method="post" enctype="multipart/form-data" id="frmAjax">
-                                      <input type="hidden" name="usuario" value="<?php echo $usuario; ?>">
+    <div class="animated fadeIn">
+        <!-- Orders -->
+    <div class="orders">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-title">
+                        <h4 class="box-title">Subir autos </h4>
+                    </div>
+                    <div class="card-body">
+                            <form method="post" enctype="multipart/form-data" id="frmAjax">
+                              <input type="hidden" name="usuario" value="<?php echo $usuario; ?>">
 
-                                      <div class="form-group">
-                                        <input type="text" class="campo-busqueda auto" name="nombreauto" id="inputNombre" placeholder="Nombre completo del vehiculo" readonly>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-3">
-                                          <input type="text" class="campo-busqueda auto" name="marca" id="inputMarca" placeholder="Marca" onkeyup="enviarTexto()" required>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                          <input type="text" class="campo-busqueda auto" name="modelo" id="inputModelo" placeholder="Modelo" onkeyup="enviarTexto()" required>
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                          <input type="number" class="campo-busqueda auto" name="anio" id="inputAnio" placeholder="Año" onkeyup="enviarTexto()" required>
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-2">
-                                          <input type="text" class="campo-busqueda auto" name="estado" id="inputEstado" placeholder="Estado" required>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                          <input type="text" class="campo-busqueda auto" name="cilindros" id="inputCilin" placeholder="Cilindros" required>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                          <input type="text" class="campo-busqueda auto" name="Motor" id="inputMotor" placeholder="Motor" required>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                          <input type="text" class="campo-busqueda auto" name="transmision" id="inputTrans" placeholder="Transmision" required>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="file" class="form-control-file" name="imagen" id="imagen" required>
-                                      </div>
-                                      <input type="submit" name="submit" id="btnGuardar" class="btn btn-dark"></input>
-                                    </form>
-                            </div>
-                        </div> <!-- /.card -->
-                    </div>  <!-- /.col-lg-8 -->
-                </div>
-            </div>
-            <!-- /.orders -->
+                              <div class="form-row">  
+                                <div class="form-group col-md-3">
+                                  <input type="text" class="campo-subir nomCom" name="nombreauto" id="inputNombre" placeholder="Nombre completo del vehiculo" readonly>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                  <input type="text" class="campo-subir width" name="marca" id="inputMarca" placeholder="Marca" onkeyup="enviarTexto()" required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                  <input type="text" class="campo-subir width" name="modelo" id="inputModelo" placeholder="Modelo" onkeyup="enviarTexto()" required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                  <input type="number" class="campo-subir anio" name="anio" id="inputAnio" placeholder="Año" onkeyup="enviarTexto()" required>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-2">
+                                  <input type="text" class="campo-subir width" name="estado" id="inputEstado" placeholder="Estado" required>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <input type="text" class="campo-subir width" name="cilindros" id="inputCilin" placeholder="Cilindros" required>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <input type="text" class="campo-subir width" name="Motor" id="inputMotor" placeholder="Motor" required>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <input type="text" class="campo-subir width" name="transmision" id="inputTrans" placeholder="Transmision" required>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-1" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-1"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-1">
+                                        <img src="" alt="" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-2" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-2"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-2">
+                                        <img src="" alt="" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-3" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-3"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-3">
+                                        <img src="" alt="" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-4" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-4"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-4">
+                                        <img src="" alt="" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-5" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-5"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-5">
+                                        <img src="" alt="" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="file" name="image[]" id="file-6" class="inputfile inputfile-2" accept="image/*"/>
+                                    <label for="file-6"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
+                                    <div class="image-preview" id="image-preview-6">
+                                        <img src="" alt="Image Preview" class="image-preview__img">
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                    </div>
+                                </div>
+                              </div>
+
+                              <input type="hidden" name="submit" id="btnGuardar">
+                              <input type="submit" id="btnGuardar" class="btn btn-dark">
+                            </form>
+                    </div>
+                </div> <!-- /.card -->
+            </div>  <!-- /.col-lg-8 -->
         </div>
-        <!-- .animated -->
+    </div>
+    <!-- /.orders -->
+    </div>
+    <!-- .animated -->
     </div>
     <!-- /.content -->
     <div class="clearfix"></div>
@@ -160,16 +212,23 @@ if(!isset($usuario)){
 <!-- /#right-panel -->
 
     <!-- Scripts -->
-    <script>  
+    <script>
         function enviarTexto() {
             var marca = document.getElementById("inputMarca").value;
             var modelo = document.getElementById("inputModelo").value;
             var anio = document.getElementById("inputAnio").value;
-            
+
             document.getElementById("inputNombre").value = marca + " " + modelo + " " + anio;
         }
+
     </script>
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/insertar.js"></script>
+    <script src="assets/js/ImagePreview.js"></script>
+    <!--===============================================================================================-->
+    <script src="assets/js/custom-file-input.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!--==================================================================================================-->
@@ -177,7 +236,6 @@ if(!isset($usuario)){
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <!--===============================================================================================-->
-    <script src="assets/js/main.js"></script>
 
 </body>
 </html>

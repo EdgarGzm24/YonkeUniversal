@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +11,7 @@ session_start();
     <!--===============================================================================================-->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="img/icon/engrane.png"/>
+    <link rel="icon" type="image/png" href="img/imagesPage/engrane.png"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" href="css/estilosIndex.css">
     <!--===============================================================================================-->
@@ -35,7 +33,7 @@ session_start();
 
 <body>
 
-    <a href="https://api.whatsapp.com/send?phone=526461177603&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20un%20auto." class="float" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=526461177603&text=Hola%21%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20pieza%20de%20un%20auto." class="float" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
     </a>
 <!--====================================VENTANA MODAL===================================================-->
@@ -114,13 +112,35 @@ session_start();
 
 <!--================================================= MENU ==============================================-->   
 <div class="contenedorTotal">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-      <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/logoPerron.png"></a>
+   <header class="header">
+      <div class="contHeader">
+        <div class="logo">
+           <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
+        </div>
+        <div class="informacion">
+           <div class="columnaDir">
+               <i class="fas fa-map-marker-alt"></i>
+               <p>Av. Moctezuma 991 <br>Zona Centro 22800 Ensenada B.C.</p>
+           </div>
+           <div class="columnaHorario">
+                <i class="far fa-clock"></i>
+                <p>Lun - Sab 8:00 AM - 7:00 PM <br>
+                    Domingo CERRADO</p>
+           </div>
+           <div class="columnaTel">
+                <i class="fas fa-phone-alt"></i>
+                <p><span>Tel:</span> 646 260 41 30 <br>
+                   <span>Cel:</span> 646 117 76 03</p>
+           </div>
+        </div>
+       </div>
+   </header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mx-auto">
           <?php if(isset($_SESSION['user'])){ ?>
           
            <li class="nav-item dropdown">
@@ -128,7 +148,7 @@ session_start();
               Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="admin/VerProductos.php">Ver autos</a>
+              <a class="dropdown-item" href="admin/">Ver autos</a>
               <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
@@ -140,7 +160,7 @@ session_start();
             <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Buscador.php">Buscador</a>
+            <a class="nav-link" href="Buscador.php">Autos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Contactanos.php">Contacto</a>
@@ -148,26 +168,25 @@ session_start();
         </ul>
       </div>
     </nav>
-       
 <!--=================================================SLIDER==============================================-->  
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/1.png" class="d-block w-100" alt="...">
+          <img src="img/imagesPage/1.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-md-block">
             <h5>YONKE UNIVERSAL</h5>
             <p>SERVICIOS, AUTOPARTES &amp; MAS...</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img/2.png" class="d-block w-100" alt="...">
+          <img src="img/imagesPage/2.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-md-block">
             <h5>YONKE UNIVERSAL</h5>
             <p>SERVICIOS, AUTOPARTES &amp; MAS...</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img/3.png" class="d-block w-100" alt="...">
+          <img src="img/imagesPage/3.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-md-block">
             <h5>YONKE UNIVERSAL</h5>
             <p>SERVICIOS, AUTOPARTES &amp; MAS...</p>
@@ -233,24 +252,30 @@ session_start();
        </div>
         
          <div class="seccionAutos">
-                <div class="card">
-                    <img src="img/sentra1.jpg" alt="">
-                    <h4>NISSAN SENTRA 2012</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, mollitia.</p>
-                    <a data-toggle="modal" data-target="#modalQuickView">MAS DETALLES</a>
-                </div>
-                <div class="card">
-                    <img src="img/sentra2.jpg" alt="">
-                    <h4>NISSAN SENTRA 2012</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, iure?</p>
-                    <a data-toggle="modal" data-target="#modalQuickView">MAS DETALLES</a>
-                </div>
-                <div class="card">
-                    <img src="img/sentra3.jpg" alt="">
-                    <h4>NISSAN SENTRA 2012</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, dolorem!</p>
-                    <a data-toggle="modal" data-target="#modalQuickView">MAS DETALLES</a>
-                </div>
+               <?php 
+                require_once("conexion.php");
+             
+                // Iniciamos sentencia preparada
+                $stmt = $conexion->prepare("SELECT nombreauto, nombre  FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC LIMIT 3");
+                $stmt->execute();
+                $resultado = $stmt->get_result();
+
+                 if ($resultado->num_rows>0) {
+                    // Obtenemos los valores
+                    while ($fila = $resultado->fetch_assoc()) {
+                            echo "<div class='card'>
+                                    <img src='img/".$fila['nombre']."' alt=''>
+                                    <h4>".$fila['nombreauto']."</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, mollitia.</p>
+                                    <a data-toggle='modal' data-target='#modalQuickView'>MAS DETALLES</a>
+                                   </div>";
+                    }
+                 } 
+                // Cerramos la sentencia preparada
+                $stmt->close();
+                $conexion->close();
+                ?>
+                
 		  </div>
 		  <div class="textoBuscador">
             <div class="textoBusc">
@@ -369,7 +394,7 @@ session_start();
         <div class="container-footer">
                <div class="footer">
                     <div class="copyright">
-                        © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/logoPerron.png" width="8%"></a>
+                        © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="8%"></a>
                     </div>
                 </div>
             </div>

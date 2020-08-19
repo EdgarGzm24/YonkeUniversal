@@ -12,7 +12,7 @@ session_start();
     
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="../img/icon/engrane.png"/>
+    <link rel="icon" type="image/png" href="../img/imagesPage/engrane.png"/>
     <link rel="stylesheet" href="<?php echo BASEURL; ?>css/estilosContactos.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -27,38 +27,60 @@ session_start();
 <body>
     <!--================================================= MENU ==============================================-->   
     <div class="contenedorTotal">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-          <a class="navbar-brand" href="<?php echo BASEURL; ?>"><img class="logoPrincipal" src="<?php echo BASEURL; ?>img/logoPerron.png"></a>
+        <header class="header">
+          <div class="contHeader">
+            <div class="logo">
+               <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
+            </div>
+            <div class="informacion">
+               <div class="columnaDir">
+                   <i class="fas fa-map-marker-alt"></i>
+                   <p>Av. Moctezuma 991 <br>Zona Centro 22800 Ensenada B.C.</p>
+               </div>
+               <div class="columnaHorario">
+                    <i class="far fa-clock"></i>
+                    <p>Lun - Sab 8:00 AM - 7:00 PM <br>
+                        Domingo CERRADO</p>
+               </div>
+               <div class="columnaTel">
+                    <i class="fas fa-phone-alt"></i>
+                    <p><span>Tel:</span> 646 260 41 30<br>
+                       <span>Cel:</span> 646 117 76 03</p>
+               </div>
+            </div>
+           </div>
+       </header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-          <?php if(isset($_SESSION['user'])){ ?>
-          
-           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="admin/VerProductos.php">Ver autos</a>
-              <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
-            </div>
-          </li>
-          <?php } ?>
-          
-          <li class="nav-item active">
-            <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Buscador.php">Buscador</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Contactanos.php">Contacto</a>
-          </li>
-        </ul>
+            <ul class="navbar-nav mx-auto">
+              <?php if(isset($_SESSION['user'])){ ?>
+
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="admin/">Ver autos</a>
+                  <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
+                </div>
+              </li>
+              <?php } ?>
+
+              <li class="nav-item">
+                <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Buscador.php">Autos</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="Contactanos.php">Contacto</a>
+              </li>
+            </ul>
           </div>
         </nav>
 
@@ -66,21 +88,21 @@ session_start();
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="<?php echo BASEURL; ?>img/1.png" class="d-block w-100" alt="...">
+              <img src="<?php echo BASEURL; ?>img/imagesPage/1.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="<?php echo BASEURL; ?>img/2.png" class="d-block w-100" alt="...">
+              <img src="<?php echo BASEURL; ?>img/imagesPage/2.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="<?php echo BASEURL; ?>img/3.png" class="d-block w-100" alt="...">
+              <img src="<?php echo BASEURL; ?>img/imagesPage/3.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
@@ -160,7 +182,7 @@ session_start();
             <div class="container-footer">
                    <div class="footer">
                         <div class="copyright">
-                            © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="<?php echo BASEURL; ?>img/logoPerron.png" width="8%"></a>
+                            © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="<?php echo BASEURL; ?>img/imagesPage/logoPerron.png" width="8%"></a>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@
                         <td>".$fila['anio']."</td>
                         
                         <td><button type='button' class='btn btn-dark'><i class='fas fa-edit'></i></button>
-                            <button type='button' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button></td>
+                            <button type='button' class='btn btn-danger' onclick='AlertaEliminacion(".$fila['id'].")'><i class='fas fa-trash-alt'></i></button></td>
     				</tr>";
     	}
     

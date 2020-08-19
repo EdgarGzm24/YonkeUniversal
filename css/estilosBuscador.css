@@ -42,34 +42,115 @@ body::-webkit-scrollbar-thumb {
 	color: #fff;
 	cursor: pointer;
 	position: fixed;
-	bottom: 20px;
+	bottom: 90px;
 	right: 20px;
-    border-radius: 10%;
+    border-radius: 50%;
 }
 .ir-arriba:hover{
     background: #343536;
     transition: all .25s;
 }
-/*============MENU==============*/
-.logoPrincipal {
-    width: 40%;
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	right:17px;
+	background-color:#00CF6A;
+	color:#FFF;
+	border-radius:50%;
+	text-align:center;
+    font-size:190%;
+	box-shadow: 2px 2px 3px #252525;
+    z-index:100;
 }
-.navbar-dark .navbar-nav .nav-item .nav-link, .navbar-dark .navbar-nav .nav-item.active .nav-link{
+.float:hover {
+	text-decoration: none;
+	color: #00CF6A;
+    background-color:#fff;
+    transition: all .25s;
+}
+
+.my-float{
+	margin-top:25%;
+}
+
+/*============MENU==============*/
+.header {
+    background-color: #151515;
+}
+.contHeader{
+    padding: 1% 2%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: auto;
+    align-items: center;
+}
+.informacion{
+    display: flex;
+    justify-content: space-between;
+}
+.informacion i {
+    color: #EC3C3C;
+    font-size: 180%;
+    padding-right: 7%;
+}
+.columnaDir, .columnaHorario, .columnaTel {
+    align-items: center;
+    display: flex;
+    padding: 2%;
+}
+.columnaDir {
+    min-width: 300px;
+}
+.columnaHorario {
+    min-width: 260px;
+}
+.columnaTel {
+    min-width: 180px;
+}
+
+.columnaDir p, .columnaHorario p, .columnaTel p {
+    font-family:"Comfortaa Bold";
+    font-weight: 600;
+    font-size: 80%;
+    color: white;
+    margin-bottom: 0%;
+}
+
+.logoPrincipal {
+    width: 50%;
+}
+.navbar {
+    box-shadow: 0px -5px 13px 1px rgba(0,0,0,0.42);
+}
+
+.navbar-dark .navbar-nav .nav-item.active .nav-link, .navbar-dark .navbar-nav .nav-item.active:hover .nav-link{
+    color: #EC3C3C;
+}
+.navbar-dark .navbar-nav .nav-item .nav-link{
     font-family: 'Comfortaa Bold', sans-serif;
     text-transform: uppercase;
     color: #fff;
 }
 .navbar-dark{
-    background-color: rgba(0,0,0,.7);
+    padding: 1% !important;
+    background-color: #252525;
+}
+.nav-item {
+    padding: 0 4%;
 }
 .navbar-dark .navbar-nav .nav-item:hover, .navbar-dark .navbar-nav .nav-item:hover .nav-link{
-    color: #E1E1E1;
+    color: #EC3C3C;
 }
 .navbar-toggler{
     border-color: rgba(255,255,255,0) !important;
 }
 .dropdown-menu {
-    background-color: rgba(0,0,0,.7) !important;
+    background-color: #252525 !important;
+    top: 115% !important;
 }
 .dropdown-item {
     font-family: 'Comfortaa Bold', sans-serif;
@@ -79,8 +160,30 @@ body::-webkit-scrollbar-thumb {
 }
 .dropdown-item:hover {
     background-color: rgba(0,0,0,.0) !important;
+    color: #EC3C3C !important;
 }
 
+@media (max-width: 1024px) {
+    .informacion i {
+        font-size: 150%;
+        padding-right: 7%;
+    }
+    .columnaDir p, .columnaHorario p, .columnaTel p {
+        font-size: 50%;
+    }
+    .columnaDir {
+        min-width: 200px;
+    }
+    .columnaHorario {
+        min-width: 180px;
+    }
+    .columnaTel {
+        min-width: 120px;
+    }
+    .logoPrincipal {
+        width: 50%;
+    }
+}
 @media (max-width: 770px) {
     .logoPrincipal {
         width: 30%;
@@ -93,7 +196,7 @@ body::-webkit-scrollbar-thumb {
     .logoPrincipal {
         width: 16%;
     }
-
+    
 }
 
 /*============SLIDER==============*/
@@ -406,12 +509,12 @@ body::-webkit-scrollbar-thumb {
 
 footer{
     width: 100%;
-    background-image: url(../img/mecanicoFondo.jpg);
+    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
     color: white;   
 }
 
 .container-footer-all{
-    background-image: url(../img/mecanicoFondo.jpg);
+    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
     width: 100%;
     max-width: 1200px;
     margin: auto;
@@ -506,15 +609,7 @@ footer{
     font-size: 200%;
     transition: all .2s;
 }
-.fa-map-marker-alt:hover{
-    color: #E94646;
-}
-.fa-phone-alt:hover{
-    color: #2C7523;
-}
-.fa-envelope:hover{
-    color: #14779E;
-}
+
 .row2{
     margin-top: 7%;
     display: flex;

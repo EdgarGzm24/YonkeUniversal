@@ -882,11 +882,10 @@ header .form-inline .search-form.close {
 }
 
 .campo-busqueda {
-    height: 5%;
-    padding: 2.5%;
+    padding: 1%;
 }
 .auto {
-    width: 106%;
+    width: 44%;
     border: none;
     border-bottom: 2px solid #343536;
     outline: none;
@@ -894,20 +893,23 @@ header .form-inline .search-form.close {
     font-size: 100%;
 }
 .btn-buscar {
-    width: 115%;
-    height: 100%;
+    width: 6%;
+    height: 50px;
     background: #343536;
     border: none;
     color: #fff;
     cursor: pointer;
 }
 .btn-buscar i {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 /* Stats Table */
 .table-stats table {
     font-family: "Open Sans";
+}
+.table thead {
+    background-color: #f1f2f7;
 }
 .table-stats table th,
 .table-stats table td {

@@ -13,7 +13,14 @@ $(document).ready(function(){
             processData: false,
         })
             .done(function(res){
-                alert("Datos subidos!");
+                document.getElementById('frmAjax').reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Datos subidos exitosamente!',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    background: '#2B2B2B' 
+                });
             });
    });
 });

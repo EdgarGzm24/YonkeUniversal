@@ -871,40 +871,38 @@ header .form-inline .search-form.close {
 .card .card-right {
     width: 40%;
 }
-.card .card-body {
+.card .card-body, .card .card-title {
     float: left;
-    padding: 1.25em;
+    padding: 3%;
     position: relative;
     width: 100%;
+}
+.card .card-title {
+    background-color: black;
+    color: white;
 }
 .card h4 {
     font-size: 1.1rem;
 }
 
-.campo-busqueda {
-    height: 5%;
-    padding: 2.5%;
-}
-.auto {
-    width: 106%;
+.campo-subir {
+    padding: 7%;
     border: none;
     border-bottom: 2px solid #343536;
     outline: none;
     height: auto;
     font-size: 100%;
 }
-.btn-buscar {
-    width: 115%;
-    height: 100%;
-    background: #343536;
-    border: none;
-    color: #fff;
-    cursor: pointer;
+.nomCom {
+    background: rgba(0, 0, 0, 0.08);
+    width: 300%;
 }
-.btn-buscar i {
-    font-size: 17px;
+.anio {
+    width: 45%;
 }
-
+.width{
+    width: 100%;
+}
 /* Stats Table */
 .table-stats table {
     font-family: "Open Sans";
@@ -936,7 +934,65 @@ header .form-inline .search-form.close {
     text-transform: capitalize;
     vertical-align: middle;
 }
+/* FILES */
+.inputfile {
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
 
+.inputfile + label {
+    min-width: 65%;
+    font-size: 120%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 2%;
+    margin-top: 6%;
+}
+
+.inputfile + label i {
+    width: .75em;
+    height: .75em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -2.5%;
+    margin-right: 2.5%;
+}
+
+.inputfileCustom {
+	font-size: 85%;
+	font-family: "Open Sans";
+}
+
+.inputfile-2 + label {
+    color: #3F3F3F;
+    border: 2px solid currentColor;
+}
+
+.inputfile-2:focus + label,
+.inputfile-2.has-focus + label,
+.inputfile-2 + label:hover {
+    color: #000;
+}
+.image-preview {
+    width: 100%;
+    min-height: 150px;
+    border: 2px solid #dddddd;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+.image-preview__img {
+    display: none;
+    width: 100%;
+}
 
 /* Footer */
 footer.site-footer {

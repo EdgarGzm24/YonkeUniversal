@@ -1,10 +1,10 @@
 <?php
+include_once 'Index.php';
 
-session_start();
 $usuario = $_SESSION['user'];
 
 if(!isset($usuario)){
-    header("location: Index.php");
+    header("location: ../Index.php");
 }
 
 ?>
@@ -37,7 +37,7 @@ if(!isset($usuario)){
             <ul class="nav navbar-nav">
                 <li class="menu-title">Elementos productos</li><!-- /.menu-title -->
                 <li class="active">
-                    <a href="../admin/VerProductos.php"><i class="menu-icon fas fa-car"></i>Productos </a>
+                    <a href="../admin/"><i class="menu-icon fas fa-car"></i>Productos </a>
                 </li>
                 <li class="menu-item">
                     <a href="../admin/CrearProductos.php"><i class="menu-icon fas fa-plus"></i>Crear </a>
@@ -50,7 +50,7 @@ if(!isset($usuario)){
                     <a href="../Buscador.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
                 </li>
                 <li class="menu-item">
-                    <a href="../contactos/Index.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
+                    <a href="../contactanos.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -74,7 +74,7 @@ if(!isset($usuario)){
                         <img class="user-avatar rounded-circle" src="images/admin.png" alt="User Avatar">
                     </a>
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar sesion</a>
+                        <a class="nav-link" href="cerrarSesion.php"><i class="fa fa-power -off"></i>Cerrar sesion</a>
                     </div>
                 </div>
 
@@ -92,14 +92,10 @@ if(!isset($usuario)){
                 <div class="col-xl-12">
                     <div class="card">
                         <form>
-                          <div class="form-row card-body">
-                            <div class="col-auto">
+                          <div class="form-box card-body">
                               <label class="sr-only" for="inlineFormInput">Auto</label>
                               <input type="text" class="campo-busqueda auto" id="auto" placeholder="Buscar auto">
-                            </div>
-                            <div class="col-auto">
                               <button type="submit" class="btn-buscar"><i class="fas fa-search"></i></button>
-                            </div>
                           </div>
                         </form>
                     </div>
@@ -157,7 +153,11 @@ if(!isset($usuario)){
 <!-- /#right-panel -->
 
     <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/eliminar.js"></script>
     <script src="assets/js/consultas.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!--==================================================================================================-->
@@ -165,7 +165,6 @@ if(!isset($usuario)){
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <!--===============================================================================================-->
-    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
