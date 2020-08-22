@@ -1,5 +1,12 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['user'];
+
+    if(!isset($usuario)){
+        header("location: ../Index.php");
+    }
     require_once("../conexion.php");
+    require_once("funciones.php");
 
     function filtrado($datos){
         $datos = trim($datos); // Elimina espacios antes y después de los datos
@@ -20,17 +27,11 @@
         $Motor = filtrado($_POST['Motor']);
         $transmision = filtrado($_POST['transmision']);
 
-        if (!($stmt = $conexion->prepare("INSERT INTO tbautos(usuario, nombreauto, marca, modelo, anio, estado, cilindros, Motor, transmision) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"))) {
-             echo "Falló la preparación: (" . $conexion->errno . ") " . $conexion->error;
+        if ($stmt = $conexion->prepare("INSERT INTO tbautos(usuario, nombreauto, marca, modelo, anio, estado, cilindros, Motor, transmision) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")){
+            $stmt->bind_param('isssssiss', $id_usuario, $nombreauto, $marca, $modelo, $anio, $estado, $cilindros, $Motor, $transmision);
+            $stmt->execute();
         }
-        if (!$stmt->bind_param('isssssiss', $id_usuario, $nombreauto, $marca, $modelo, $anio, $estado, $cilindros, $Motor, $transmision)) {
-            echo "Falló la vinculación de parámetros: (" . $sentencia->errno . ") " . $sentencia->error;
-        }
-        if (!$stmt->execute()) {
-            echo "Falló la ejecución: (" . $sentencia->errno . ") " . $sentencia->error;
-        }
-        
-        // Iniciamos sentencia preparada
+            // Iniciamos sentencia preparada
         if ($stmt = $conexion->prepare("SELECT MAX(id) as id FROM tbautos")) {
             $stmt->execute();
             // Vinculamos variables a columnas
@@ -43,26 +44,27 @@
             $stmt->close();
         }
 
-            $f=1;
-            //Comprobamos si el fichero es una imagen
-            if ($_FILES['imagen']['type']=='image/png' || $_FILES['imagen']['type']=='image/jpeg') {
-                
-                $extension = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
+        $f=1;
+        $cantidad = count($_FILES['image']['tmp_name']);
+        for($i=0; $i < $cantidad; $i++){
+                //Comprobamos si el fichero es una imagen
+            if ($_FILES['image']['type'][$i]=='image/png' || $_FILES['image']['type'][$i]=='image/jpeg') {
+
+                $extension = pathinfo($_FILES["image"]["name"][$i], PATHINFO_EXTENSION);
                 $nuevo_nombre = "auto_".date("Ymd_his")."$f.".$extension;
                 $nueva_direccion = "../img/".basename($nuevo_nombre);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], $nueva_direccion);
+                move_uploaded_file($_FILES["image"]["tmp_name"][$i], $nueva_direccion);
                 
-                if (!($stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)"))){
-                     echo "Falló la preparación: (" . $conexion->errno . ") " . $conexion->error;
-                }
-                if (!$stmt->bind_param('isi', $id_publicacion,$nuevo_nombre,$f)) {
-                    echo "Falló la vinculación de parámetros: (" . $conexion->errno . ") " . $conexion->error;
-                }
-                if (!$stmt->execute()) {
-                    echo "Falló la ejecución: (" .$conexion->errno . ") " . $conexion->error;
-                }
+                $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
+                imagejpeg($imagen_optimizada, $nueva_direccion);
+
+                $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
+                $stmt->bind_param('isi', $id_publicacion,$nuevo_nombre,$f);
+                $stmt->execute();
             }
-            $conexion->close();
+            $f++;
+        }
+        $conexion->close();
         
     }
 

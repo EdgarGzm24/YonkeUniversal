@@ -11,16 +11,16 @@ $(document).ready(function(){
             cache: false,
             contentType: false,
             processData: false,
-        })
-            .done(function(res){
-                document.getElementById('frmAjax').reset();
+            success: function(){
+                location.reload();
                 Swal.fire({
                     icon: 'success',
                     title: 'Datos subidos exitosamente!',
                     showConfirmButton: false,
-                    timer: 5000,
+                    timer: 4000,
                     background: '#2B2B2B' 
                 });
-            });
+            }
+        })
    });
 });

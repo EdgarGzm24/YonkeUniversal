@@ -1,17 +1,16 @@
-const inputFile = document.getElementById('file-1'),
-      vistaText = document.getElementById('image-preview__txt');
-let vistaPrevia = document.getElementById('image-preview-1');
-
-function showImagePreview(e, vistaId){
+function showImagePreview(e){
     // Creamos el objeto de la clase FileReader
     let reader = new FileReader();
-
+    let input = e.currentTarget;
+    let file = input.files[0];
+           
     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-    if(reader.readAsDataURL(e.target.files[0])){
-
+    reader.readAsDataURL(file);
+    
       // Le decimos que cuando este listo ejecute el código interno
       reader.onload = function(){
-        let preview = document.getElementById(vistaId),
+          
+        let preview = input.parentElement.querySelector('.image-preview'),
                 image = document.createElement('img');
 
         image.src = reader.result;
@@ -19,9 +18,10 @@ function showImagePreview(e, vistaId){
         preview.innerHTML = '';
         preview.append(image);
       };
-    } else {
-        
-    }
 }
 
-inputFile.addEventListener("change", showImagePreview(vistaPrevia));
+let inputs_imagen = document.querySelectorAll('.inputfile');
+
+inputs_imagen.forEach(input => {
+    input.addEventListener('change', showImagePreview);
+})

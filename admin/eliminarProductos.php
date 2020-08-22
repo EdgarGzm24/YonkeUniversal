@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['user'];
+
+    if(!isset($usuario)){
+        header("location: ../Index.php");
+    }
+
     include_once '../conexion.php';
     $id = $_POST['id'];
 
@@ -13,12 +20,13 @@
 
             unlink("../img/".$imgRow['nombre']);
         }
-        $stmt_delete = $conexion->prepare("DELETE FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.id = ?");
+        
+        $stmt_delete = $conexion->prepare("DELETE FROM tbautos WHERE id = ?");
         $stmt_delete->bind_Param('i', $id);
         $stmt_delete->execute();
         
-        $stmt_select->close();
         $stmt_delete->close();
+        $stmt_select->close();
         $conexion->close();
     }
 

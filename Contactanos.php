@@ -1,9 +1,4 @@
-<?php
-require_once('core/config.php');
-
-session_start();
-
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../img/imagesPage/engrane.png"/>
-    <link rel="stylesheet" href="<?php echo BASEURL; ?>css/estilosContactos.css">
+    <link rel="stylesheet" href="css/estilosContactos.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!--===============================================================================================-->
@@ -59,9 +54,7 @@ session_start();
               <?php if(isset($_SESSION['user'])){ ?>
 
                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Admin </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="admin/">Ver autos</a>
                   <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
@@ -88,21 +81,21 @@ session_start();
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="<?php echo BASEURL; ?>img/imagesPage/1.png" class="d-block w-100" alt="...">
+              <img src="img/imagesPage/1.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="<?php echo BASEURL; ?>img/imagesPage/2.png" class="d-block w-100" alt="...">
+              <img src="img/imagesPage/2.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="<?php echo BASEURL; ?>img/imagesPage/3.png" class="d-block w-100" alt="...">
+              <img src="img/imagesPage/3.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
@@ -182,7 +175,7 @@ session_start();
             <div class="container-footer">
                    <div class="footer">
                         <div class="copyright">
-                            © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="<?php echo BASEURL; ?>img/imagesPage/logoPerron.png" width="8%"></a>
+                            © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="8%"></a>
                         </div>
                     </div>
                 </div>

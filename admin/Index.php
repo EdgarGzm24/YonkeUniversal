@@ -16,10 +16,12 @@ if(isset($_SESSION['user'])){
 
     $usuario = filtrado($_POST['usuario']);
     $contrasena = filtrado( sha1($_POST['contrasena']) );
+    
+    $stmt = $conexion->prepare("SELECT * FROM tbusuarios WHERE usuario = ? AND contrasena = ?");
+    $stmt->bind_param("ss", $usuario, $contrasena);
+    $stmt->execute();
 
-    if ($query = "SELECT * FROM tbusuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'") {
-
-        $consulta = $conexion->query($query);
+    $consulta = $stmt->get_result();
 
         if($consulta->num_rows>0) {
             $fila = $consulta->fetch_assoc();
@@ -27,15 +29,20 @@ if(isset($_SESSION['user'])){
             $_SESSION['user'] = $fila['id'];
             include_once 'VerProductos.php';
 
-        } else {
-            echo "Datos incorrectos";
-        }
-    }
+        } else { 
+           include_once 'InicioSesion.php'; ?>
+            <script>
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Usuario o contraseña incorrecta',
+                  background: '#2B2B2B' 
+                })
+            </script>
+        <?php }
 
-    
 } else {
     include_once 'InicioSesion.php';
-    
 }
 
 ?>

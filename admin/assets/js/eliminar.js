@@ -25,13 +25,19 @@ function eliminarDatos(id) {
             data: {id: id},
             beforeSend: function(){},
             success: function(){
+                actualizar_tabla(id);
                 Swal.fire({
                     icon: 'success',
                     title: 'El auto ha sido eliminado exitosamente!',
                     showConfirmButton: false,
-                    timer: 5000,
+                    timer: 4000,
                     background: '#2B2B2B' 
                 })
             }
         });
+}
+
+function actualizar_tabla(id){
+    let fila = document.querySelector('#fila_' + id);
+    fila.remove();
 }

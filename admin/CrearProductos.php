@@ -15,7 +15,7 @@ if(!isset($usuario)){
 <!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Administradores | Yonke Universal</title>
+    <title>Crear auto | Yonke Universal</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     
     <link rel="icon" type="image/png" href="../img/icon/engrane.png"/>
@@ -36,12 +36,12 @@ if(!isset($usuario)){
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="menu-title">Elementos productos</li><!-- /.menu-title -->
+                <li class="menu-title">Elementos autos</li><!-- /.menu-title -->
                 <li class="menu-item">
-                    <a href="../admin/"><i class="menu-icon fas fa-car"></i>Productos </a>
+                    <a href="../admin/"><i class="menu-icon fas fa-car"></i>Autos </a>
                 </li>
                 <li class="active">
-                    <a href="../admin/CrearProductos.php"><i class="menu-icon fas fa-plus"></i>Crear </a>
+                    <a href="../admin/CrearProductos.php"><i class="menu-icon fas fa-plus"></i>Añadir autos</a>
                 </li>
                 <li class="menu-title">Pagina principal</li><!-- /.menu-title -->
                 <li class="menu-item">
@@ -131,11 +131,11 @@ if(!isset($usuario)){
                               </div>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-1" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="image[]" id="file-1" class="inputfile inputfile-2" accept="image/*" required/>
                                     <label for="file-1"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-1">
                                         <img src="" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa principal</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -143,7 +143,7 @@ if(!isset($usuario)){
                                     <label for="file-2"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-2">
                                         <img src="" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -151,7 +151,7 @@ if(!isset($usuario)){
                                     <label for="file-3"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-3">
                                         <img src="" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -159,7 +159,7 @@ if(!isset($usuario)){
                                     <label for="file-4"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-4">
                                         <img src="" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -167,7 +167,7 @@ if(!isset($usuario)){
                                     <label for="file-5"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-5">
                                         <img src="" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -175,12 +175,12 @@ if(!isset($usuario)){
                                     <label for="file-6"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview" id="image-preview-6">
                                         <img src="" alt="Image Preview" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa</span>
+                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                               </div>
 
-                              <input type="hidden" name="submit" id="btnGuardar">
+                              <input type="hidden" name="submit" id="Guardar">
                               <input type="submit" id="btnGuardar" class="btn btn-dark">
                             </form>
                     </div>

@@ -3,15 +3,18 @@
 
     $salida = "";
 
-    $consulta = "SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC";
+    $stmt = $conexion->prepare("SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC");
 
     if (isset($_POST['consulta'])) {
     	$buscador = $conexion->real_escape_string($_POST['consulta']);
         
-    	$consulta = "SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.nombreauto LIKE '%$buscador%' AND imagenes.numero=1";
+    	$stmt = $conexion->prepare("SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.nombreauto LIKE ? AND imagenes.numero=1");
+        $varBuscador = '%'.$buscador.'%';
+        $stmt->bind_Param('s', $varBuscador);
     }
 
-    $resultado = $conexion->query($consulta);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
     if ($resultado->num_rows>0) {
         

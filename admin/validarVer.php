@@ -1,22 +1,32 @@
 <?php
+    session_start();
+    $usuario = $_SESSION['user'];
+
+    if(!isset($usuario)){
+        header("location: ../Index.php");
+    }
+
     require_once "../conexion.php";
 
     $salida = "";
 
-    $consulta = "SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1";
+    $stmt = $conexion->prepare("SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1");
 
     if (isset($_POST['consulta'])) {
     	$buscador = $conexion->real_escape_string($_POST['consulta']);
         
-    	$consulta = "SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.nombreauto LIKE '%$buscador%' AND imagenes.numero=1";
+    	$stmt = $conexion->prepare("SELECT * FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.nombreauto LIKE ? AND imagenes.numero=1");
+        $varBuscador = '%'.$buscador.'%';
+        $stmt->bind_Param('s', $varBuscador);
     }
 
-    $resultado = $conexion->query($consulta);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
     if ($resultado->num_rows>0) {
         
     	while ($fila = $resultado->fetch_assoc()) {
-    		$salida.="<tr>
+    		$salida.="<tr id='fila_".$fila['id']."'>
                         <td class='serial'>".$fila['id']."</td>
     					<td class='avatar'>
                             <div class='round-img'>
