@@ -36,79 +36,10 @@ session_start();
     <a href="https://api.whatsapp.com/send?phone=526461177603&text=Hola%21%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20pieza%20de%20un%20auto." class="float" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
     </a>
-<!--====================================VENTANA MODAL===================================================-->
-<div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-5">
-            <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails"
-              data-ride="carousel">
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="img/sentra1.jpg" alt="Primer slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra2.jpg" alt="Segundo slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra3.jpg" alt="Tercer slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra4.jpg" alt="Cuarto slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra5.jpg" alt="Quinto slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra6.jpg" alt="Sexto slide">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-thumb" data-slide-to="0" class="active">
-                  <img src="img/sentra1.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="1">
-                  <img src="img/sentra2.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="2">
-                  <img src="img/sentra3.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="3">
-                  <img src="img/sentra4.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="4">
-                  <img src="img/sentra5.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="5">
-                  <img src="img/sentra6.jpg" width="60">
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <h2><strong>Nissan Sentra 2012</strong></h2>
-                <p>Estado: </p>
-                <p>Cilindros: </p>
-                <p>Motor: </p>
-                <p>Transmision: </p>
-                <a class="btn-close-popup" data-dismiss="modal"><i class="fas fa-times"></i></a>
-          </div>
-        </div>
-      </div>
+
+    <div id="modalAuto">
+        <!--Aqui estara el popUp con la informacion del auto-->
     </div>
-  </div>
-</div>
 
 <!--================================================= MENU ==============================================-->   
 <div class="contenedorTotal">
@@ -256,7 +187,7 @@ session_start();
                 require_once("conexion.php");
              
                 // Iniciamos sentencia preparada
-                $stmt = $conexion->prepare("SELECT nombreauto, nombre  FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC LIMIT 3");
+                $stmt = $conexion->prepare("SELECT id, nombreauto, nombre  FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC LIMIT 3");
                 $stmt->execute();
                 $resultado = $stmt->get_result();
 
@@ -267,7 +198,7 @@ session_start();
                                     <img src='img/".$fila['nombre']."' alt=''>
                                     <h4>".$fila['nombreauto']."</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, mollitia.</p>
-                                    <a data-toggle='modal' data-target='#modalQuickView'>MAS DETALLES</a>
+                                    <a href='javascript:void(0)' onclick='mostrarDetalles(".$fila['id'].")'>MAS DETALLES</a>
                                    </div>";
                     }
                  } 
@@ -289,65 +220,7 @@ session_start();
     
 <!--================================================GALERIA AUTOS========================================--> 
 
-<div class="container gallery-container">
 
-    <h1>Autopartes</h1>
-
-    <p class="page-description text-center">A continuacion puede observar con detenimiento las distintas opciones que tenemos a la venta.</p>
-    
-    <div class="tz-gallery">
-
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-</div>
 
 <!--=====================================================FOOTER=============================================-->
     <footer>
@@ -402,6 +275,17 @@ session_start();
 </div>
    
     <script>
+
+        function mostrarDetalles(id){
+
+            var ruta = 'popUpAuto.php?id=' + id;
+            $.get(ruta, function (data) {
+               $('#modalAuto').html(data);
+               $('#modalQuickView').modal('show');
+            });
+
+        }
+
       $(".services").owlCarousel({
         margin:20,
         loop:true,
@@ -421,13 +305,6 @@ session_start();
         }
       });
     </script>
-    <!--==================================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-    <script>
-        baguetteBox.run('.tz-gallery');
-    </script>
-    <!--==================================================================================================-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <!--==================================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!--==================================================================================================-->
