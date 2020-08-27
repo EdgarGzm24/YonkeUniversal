@@ -1,8 +1,20 @@
 <?php
-$id = $_REQUEST['id'];
-require_once 'conexion.php';
-$consulta = $conexion->query("SELECT * FROM tbautos WHERE id=$id");
-$info = $consulta->fetch_assoc();
+    session_start();
+    $usuario = $_SESSION['user'];
+
+    if(!isset($usuario)){
+        header("location: ../Index.php");
+    }
+
+    $id = 66;
+    require_once 'conexion.php';
+
+    $stmt = $conexion->prepare("SELECT nombreauto, estado, cilindros, Motor, transmision, GROUP_CONCAT(imagenes.nombre SEPARATOR '|') AS images FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.id = ?");
+    $stmt->bind_Param('i', $id);
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+    $info = $resultado->fetch_assoc();
 
 echo "
 <div class='modal fade' id='modalQuickView' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -15,26 +27,17 @@ echo "
             <div id='carousel-thumb' class='carousel slide carousel-fade carousel-thumbnails'
               data-ride='carousel'>
 
-              <div class='carousel-inner' role='listbox'>
-                <div class='carousel-item active'>
-                  <img class='d-block w-100' src='' >
-                </div>
-                <div class='carousel-item'>
-                  <img class='d-block w-100' src='' >
-                </div>
-                <div class='carousel-item'>
-                  <img class='d-block w-100' src='' >
-                </div>
-                <div class='carousel-item'>
-                  <img class='d-block w-100' src='' >
-                </div>
-                <div class='carousel-item'>
-                  <img class='d-block w-100' src='' >
-                </div>
-                <div class='carousel-item'>
-                  <img class='d-block w-100' src='' >
-                </div>
-              </div>
+              <div class='carousel-inner' role='listbox'>";
+
+                $imagen = explode("|", $info['images']);
+
+                foreach($imagen as $imagenRow){
+                    echo "<div class='carousel-item active'>
+                      <img class='d-block w-100' src='img/".$imagenRow."' >
+                    </div>";
+                }
+
+              echo "</div>
 
               <a class='carousel-control-prev' href='#carousel-thumb' role='button' data-slide='prev'>
                 <span class='carousel-control-prev-icon' aria-hidden='true'></span>
@@ -45,26 +48,16 @@ echo "
                 <span class='sr-only'>Next</span>
               </a>
 
-              <ol class='carousel-indicators'>
-                <li data-target='#carousel-thumb' data-slide-to='0' class='active'>
-                  <img src='' width='60'>
-                </li>
-                <li data-target='#carousel-thumb' data-slide-to='1'>
-                  <img src='' width='60'>
-                </li>
-                <li data-target='#carousel-thumb' data-slide-to='2'>
-                  <img src='' width='60'>
-                </li>
-                <li data-target='#carousel-thumb' data-slide-to='3'>
-                  <img src='' width='60'>
-                </li>
-                <li data-target='#carousel-thumb' data-slide-to='4'>
-                  <img src='' width='60'>
-                </li>
-                <li data-target='#carousel-thumb' data-slide-to='5'>
-                  <img src='' width='60'>
-                </li>
-              </ol>
+              <ol class='carousel-indicators'>";
+            foreach($imagen as $imagenRow){
+            $i = 0;    
+                echo "<li data-target='#carousel-thumb' data-slide-to='".$i."'>
+                      <img src='img/".$imagenRow."' width='60'>
+                    </li>";
+            $i++;
+            }  
+
+            echo "</ol>
             </div>
             <!--/.Carousel Wrapper-->
           </div>
@@ -83,8 +76,3 @@ echo "
 </div>";
 
 ?>
-  
-
-  
-  
-
