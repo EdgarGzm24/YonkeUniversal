@@ -1,18 +1,14 @@
 <?php
-include_once 'Index.php';
 
 $usuario = $_SESSION['user'];
 
 if(!isset($usuario)){
-    header("location: ../Index.php");
+    header("location: ../admin/");
 }
 
 ?>
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
+<!DOCTYPE html>
+<html class="no-js" lang="es">
 <head>
     <meta charset="utf-8">
     <title>Administradores | Yonke Universal</title>
@@ -35,7 +31,7 @@ if(!isset($usuario)){
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="menu-title">Elementos productos</li><!-- /.menu-title -->
+                <li class="menu-title">Elementos autos</li><!-- /.menu-title -->
                 <li class="active">
                     <a href="../admin/"><i class="menu-icon fas fa-car"></i>Productos </a>
                 </li>
@@ -63,7 +59,7 @@ if(!isset($usuario)){
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../"><img src="images/logo.png" alt="Logo" width="80"></a>
+                <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Logo" width="80"></a>
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>
@@ -74,7 +70,7 @@ if(!isset($usuario)){
                         <img class="user-avatar rounded-circle" src="images/admin.png" alt="User Avatar">
                     </a>
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="cerrarSesion.php"><i class="fa fa-power -off"></i>Cerrar sesion</a>
+                        <a class="nav-link" href="cerrarSesion.php"><i class="fas fa-power-off"></i>Cerrar sesion</a>
                     </div>
                 </div>
 
@@ -154,8 +150,7 @@ if(!isset($usuario)){
 
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/eliminar.js"></script>
-    <script src="assets/js/consultas.js"></script>
+    <script src="assets/js/funcionesAjax.js"></script>
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--===============================================================================================-->

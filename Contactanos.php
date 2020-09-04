@@ -7,25 +7,23 @@
     
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="../img/imagesPage/engrane.png"/>
+    <link rel="icon" type="image/png" href="img/imagesPage/engrane.png"/>
     <link rel="stylesheet" href="css/estilosContactos.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!--===============================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-	<!--===============================================================================================-->
-	
 </head>
 <body>
-    <!--================================================= MENU ==============================================-->   
+    <!-- MENU -->   
     <div class="contenedorTotal">
         <header class="header">
           <div class="contHeader">
             <div class="logo">
-               <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
+               <a class="navbar-brand" href="/"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
             </div>
             <div class="informacion">
                <div class="columnaDir">
@@ -46,9 +44,9 @@
            </div>
        </header>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
-          </button>
+          </a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <?php if(isset($_SESSION['user'])){ ?>
@@ -59,13 +57,13 @@
                   <a class="dropdown-item" href="admin/">Ver autos</a>
                   <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
+                  <a class="dropdown-item" href="admin/cerrarSesion.php"><i class="fas fa-power-off"></i>  Cerrar sesion</a>
                 </div>
               </li>
               <?php } ?>
 
               <li class="nav-item">
-                <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="Buscador.php">Autos</a>
@@ -77,7 +75,7 @@
           </div>
         </nav>
 
-    <!--=================================================SLIDER==============================================-->  
+    <!-- SLIDER -->  
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -104,10 +102,9 @@
           </div>
         </div>
 
-   <!--=====================================================CENTRO=============================================-->
+   <!-- CENTRO -->
    
-   <div class="content">
-
+    <div class="content">
         <div class="contact-wrapper animated bounceInUp">
             <div class="contact-form">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1694.0918479067732!2d-116.62559630185241!3d31.874421453525674!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x421eec48beac2281!2sServicio%20Autoel%C3%A9ctrico%20Universal!5e0!3m2!1ses-419!2smx!4v1594448993760!5m2!1ses-419!2smx" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -127,62 +124,63 @@
                 <br>Lun. a Sab. de 8:00 AM a 5:00 PM</p>
             </div>
         </div>
-
     </div>
    
-    <!--=====================================================FOOTER=============================================-->
+    <!-- FOOTER -->
         <footer>
-           <div class="container-footer-all">
-                <div class="container-body">
-                    <div class="colum1 minimizar">
-                        <h1>Informacion de la compañia</h1>
-                        <p>Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea de lo que puede ir aqui, eso lo pondre hasta que me den la descripcion mientras estara este texto llenando el espacio de la informacion de la compañia.</p>
-                    </div>
-                    <div class="colum2">
-                        <h1 class="minimizar">Redes Sociales</h1>
-                        <div class="rows">   
-                            <a href=""><i class="fab fa-facebook-square"></i></a>
-                            <label class="minimizar">Siguenos en <a href=""> Facebook</a></label>
-                        </div>
-                        <div class="rows">   
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <label class="minimizar">Siguenos en <a href=""> Instagram</a></label>
-                        </div>
-                        <div class="rows">  
-                            <a href=""><i class="fab fa-whatsapp"></i></a>
-                            <label class="minimizar">Escribenos por <a href=""> WhatsApp</a></label>
-                        </div>
-                    </div>
-                    <div class="colum3">
-                        <h1 class="minimizar">Informacion de Contacto</h1>
-                        <div class="row2">
-                            <a href=""><i class="fas fa-map-marker-alt"></i></a>
-                            <label>Av Moctezuma 991,
-                            Zona Centro 22800
-                            Ensenada B.C.</label>
-                        </div>
-                        <div class="row2 minimizar">
-                            <a href=""><i class="fas fa-phone-alt"></i></a>
-                            <label>+52 (646)-260-41-30</label>
-                        </div>
-                        <div class="row2 minimizar">
-                            <a href=""><i class="far fa-envelope"></i></a>
-                            <label>edjar45@hotmail.com</label>
-                        </div>
+            <div class="inner-footer">
+
+                <div class="footer-items phone">
+                    <h2><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="70%"></h2>
+                    <div class="borde"></div>
+                    <p>
+                        Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea.
+                    </p>
+                </div>
+
+                <div class="footer-items phone">
+                    <h2>Links rapidos</h2>
+                    <div class="borde"></div>
+                    <ul>
+                        <a href="../"><li><i class="fas fa-angle-right"></i>Inicio</li></a>
+                        <a href="../YonkeUniversal/Buscador.php"><li><i class="fas fa-angle-right"></i>Autos</li></a>
+                        <a href="../YonkeUniversal/Contactanos.php"><li><i class="fas fa-angle-right"></i>Contacto</li></a>
+                        
+                        <?php if(isset($_SESSION['user'])){ ?>
+                        <a href="../YonkeUniversal/admin/"><li><i class="fas fa-angle-right"></i>Lista autos</li></a>
+                        <a href="../YonkeUniversal/admin/CrearProductos.php"><li><i class="fas fa-angle-right"></i>Añadir autos</li></a>
+                    <?php } ?>
+                    </ul>
+                </div>
+
+                <div class="footer-items">
+                    <h2>Contactanos</h2>
+                    <div class="borde"></div>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt dir"></i>
+                            Av Moctezuma 991,Zona Centro 
+                            22800 Ensenada B.C.
+                        </li>
+                        <li><i class="fas fa-phone-alt dir"></i>(646)-260-41-30</li>
+                        <li><i class="far fa-envelope dir"></i>edjar45@hotmail.com</li>
+                    </ul>
+                    <div class="social-media">
+                        <a href=""><i class="fab fa-facebook-square Face"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=526461177603&text=Hola%21%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20pieza%20de%20un%20auto." target="_blank"><i class="fab fa-whatsapp Ws"></i></a>
                     </div>
                 </div>
+
             </div>
-            <div class="container-footer">
-                   <div class="footer">
-                        <div class="copyright">
-                            © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="8%"></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+               <div class="copyright">
+                   © 2020 Todos los Derechos Reservados
+               </div>
+            </div>
         </footer>
     </div>
     <!--==================================================================================================-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
     <!--==================================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!--==================================================================================================-->

@@ -107,7 +107,12 @@ body::-webkit-scrollbar-thumb {
     color: #EC3C3C;
 }
 .navbar-toggler{
+    color:white !important;
     border-color: rgba(255,255,255,0) !important;
+}
+.navbar-toggler:hover{
+    cursor: pointer;
+    color:white !important;
 }
 .dropdown-menu {
     background-color: #252525 !important;
@@ -146,8 +151,11 @@ body::-webkit-scrollbar-thumb {
     }
 }
 @media (max-width: 770px) {
+    .informacion{
+        display: none;
+    }
     .logoPrincipal {
-        width: 30%;
+        width: 20%;
     }
     .navbar-dark .navbar-nav .nav-item .nav-link, .navbar-dark .navbar-nav .nav-item.active .nav-link{
         font-size: 80%;
@@ -155,7 +163,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media (max-width: 550px) {
     .logoPrincipal {
-        width: 16%;
+        width: 25%;
     }
     
 }
@@ -185,6 +193,7 @@ body::-webkit-scrollbar-thumb {
     
     .carousel-caption{
         margin-bottom: 9%;
+        padding: 0% 6%;
     }
     .carousel-caption h5{
         font-size: 300%;
@@ -196,10 +205,10 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 850px) {
     
     .carousel-caption{
-        margin-bottom: 7%;
+        margin-bottom: 10%;
     }
     .carousel-caption h5{
-        font-size: 220%;
+        font-size: 250%;
     }
     .carousel-caption p{
         font-size: 70%;
@@ -208,24 +217,35 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 670px) {
     
     .carousel-caption{
-        margin-bottom: 6%;
+        padding: 0% 8%;
     }
     .carousel-caption h5{
-        font-size: 150%;
-    }
-    .carousel-caption p{
-        font-size: 60%;
+        font-size: 200%;
     }
 }
 @media (max-width: 500px) {
     
     .carousel-caption{
-        margin-bottom: 2%;
-        padding: 0% 14%;
+        margin-bottom: 6%;
+        padding: 0% 5%;
     }
     .carousel-caption h5{
         border-bottom: 2px solid #F40F0F;
-        font-size: 100%;
+        font-size: 160%;
+    }
+    .carousel-caption p{
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 360px) {
+    
+    .carousel-caption{
+        margin-bottom: 2%;
+    }
+    .carousel-caption h5{
+        border-bottom: 2px solid #F40F0F;
+        font-size: 130%;
     }
     .carousel-caption p{
         font-size: 40%;
@@ -247,6 +267,8 @@ ul {
     -webkit-box-shadow: 6px 7px 5px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 6px 7px 5px 1px rgba(0,0,0,0.75);
     box-shadow: 6px 7px 5px 1px rgba(0,0,0,0.75);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .contact-form {
@@ -269,6 +291,7 @@ ul {
     margin-bottom: 7%;
 }
 .contact-info i{
+    margin-right: 2%;
     font-size: 150%;
     cursor: pointer;
     transition: all .3s;
@@ -277,229 +300,151 @@ ul {
     margin-top: 4%;
 }
 
-@media(min-width: 700px) {
+@media(max-width: 770px) {
     
     .contact-wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
+        display: block;
     }
-    .contact-info {
-        padding: 7%;
-    }
+
 }
 /*============FOOTER==============*/
 
 footer{
     width: 100%;
     background-image: url(../img/imagesPage/mecanicoFondo.jpg);
-    color: white;   
+    color: white; 
+    display: block;
 }
 
-.container-footer-all{
-    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 3%;
+.inner-footer {
+	width: 100%;
+	margin: auto;
+	padding: 2%;
+	display: flex;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	justify-content: center;
 }
 
-.container-body{
-    display: flex;
-    justify-content: space-between;
+.footer-items {
+	width: 30%;
+	padding: 0% 3%;
+	box-sizing: border-box;
 }
 
-.colum1{
-    max-width: 350px;
+.footer-items p {
+    font-family: 'Muli', sans-serif;
+	font-size: 16px;
+	line-height: 25px;
 }
 
-.colum1 h1{
-    font-family: 'Lemon Milk Light', sans-serif;
-    font-size: 120%;
+.footer-items h2 {
+    font-family:"Lemon Milk Medium"; 
+	margin: 2% 0;
+	font-size: 160%;
+	text-transform: uppercase;
 }
 
-.colum1 p{
-    font-family: 'Geo Sans Light', sans-serif;
-    font-size: 100%;
-    color: #C7C7C7;
-    margin-top: 3%;
-    font-weight: bold;
+.borde {
+	height: 1%;
+	width: 10%;
+	background: #EC3C3C;
 }
-.colum1 a {
+
+.footer-items ul {
+    font-family: 'Muli', sans-serif;
+	list-style: none;
+	color: #fff;
+	font-size: 100%;
+	letter-spacing: 0.5px;
+}
+
+.footer-items ul a {
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	transition: 0.3s;
+}
+
+.footer-items ul a:hover {
+	color: #EC3C3C;
     text-decoration: none;
-    color: white;
-    
-}
-.colum2{
-    min-width: 300px;
 }
 
-.colum2 h1{
-    font-family: 'Lemon Milk Light', sans-serif;
-    font-size: 120%;
+.footer-items ul li {
+	margin: 4% 0;
 }
-.rows{
-    margin-top: 6%;
-    display: flex;
+
+.footer-items li i {
+	margin-right: 3%;
 }
-.rows a, .rows a:hover {
-    text-decoration: none;
-    color: #C7C7C7;
+
+.dir{
+	font-size: 140%;
 }
-.rows i {
-    color: #fff;
-    padding: 30%;
-    font-size: 200%;
-    transition: all .2s;
+
+.social-media i {
+	margin: 2% .5%;
+	padding: 4%;
+    font-size: 25px;
+	border-radius: 50%;
+	transition: 0.3s;
 }
-.fa-facebook-square:hover {
+
+.social-media .Face {
     color: #375AD4;
-}
-.fa-instagram:hover {
-  color: transparent;
-  background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -o-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-.fa-whatsapp:hover {
-    color: #00CF6A;
+    border: 2px solid #375AD4;
 }
 
-.rows label{
-    font-family: 'Geo Sans Light', sans-serif;
-    font-weight: bold;
-    font-size: 120%;
-    margin-top: 5%;
-    margin-left: 8%;
-    color: #C7C7C7;
-}
-
-.colum3{
-    max-width: 360px;
-}
-
-.colum3 h1{
-    font-family: 'Lemon Milk Light', sans-serif;
-    font-size: 120%;
-}
-
-.row2 i {
+.social-media .Face:hover {
+	background: #375AD4;
     color: #fff;
-    padding: 30%;
-    font-size: 200%;
-    transition: all .2s;
 }
-.row2{
-    margin-top: 7%;
-    display: flex;
+.social-media .Ws {
+    color: #00CF6A;
+    border: 2px solid #00CF6A;
 }
 
-.row2 img{
-    width: 10%;
-    height: 10%;
+.social-media .Ws:hover {
+	background: #00CF6A;
+    color: #fff;
 }
 
-.row2 label{
-    font-family: 'Geo Sans Light', sans-serif;
-    font-weight: bold;
-    margin: 2% 6%;
-}
-
-.container-footer{
-    width: 100%;  
+.footer-bottom{
     background: #101010;
 }
-
-.footer{
-    margin: auto;
-    display: flex;
-    justify-content: space-between;  
-    padding: 1.5% 6%;
+.copyright {
+    width: 90%;
+	margin: auto;
+	padding: 1.5% 4.5%;
+	color: #fff;
+    font-family: 'Muli', sans-serif;
+	font-size: 100%;
 }
 
-.copyright{
-    font-family: 'Geo Sans Light', sans-serif;
-    font-weight: bold;
-    color: #C7C7C7;
+@media (max-width: 1085px) {
+	.footer-items {
+		width: 50%;
+	}
 }
 
-.copyright a{
-    font-size: 100%;
-    font-family: 'Comfortaa Bold', sans-serif;
-    text-decoration: none;
-    color: white;
-    text-weight: bold;
-}
-
-@media(max-width: 1100px){
-    
-    .container-body{
-        flex-wrap: wrap;
-    }
-    
-    .colum1{
-        max-width: 100%;
-    }
-    
-    .colum2,
-    .colum3{
-        margin-top: 5%;
-    }
-}
-
-@media(max-width: 770px){
-    .colum2 {
-        margin-top: 0%;
-        margin-left: 9%;
-        display: flex;  
-    }
-    .rows {
-        margin-left: 10%;
-        margin-top: 0%;  
-    }
-    .rows i {
-        font-size: 300%;
-        margin-left: 0%;
-        margin-bottom: 0%;
-    }
-    .row2 {
-        margin-left: 0%;
-        margin-top: 3%;
-    }
-    .row2 label{
-        margin-top: 0%;
-    }
-    .colum3 {
-        margin-top: 0%;
-        max-width: 290px;
-    }
-    .minimizar {
+@media (max-width: 673px) {
+    .phone{
         display: none;
     }
+	.footer-items {
+		width: 100%;
+	}
+    .footer-items h2, .footer-items ul, .copyright {
+		font-size: 80%;
+	}
+    .social-media i {
+        padding: 2%;
+        font-size: 20px;
+    }
     
-}
-
-@media(max-width: 714px){
-    .row2 {
-        margin-left: 20%;
-    }
-}
-
-@media(max-width:470px) {
-    .rows i {
-        font-size: 240%;
-    }
-    .row2 {
-        margin-top: 5%;
-        margin-left: 10%;   
-    }
-    .row2 label {
-        font-size: 70%;
-    }
     .copyright {
-        margin-left: 6%;
-        font-size: 70%;
+	    padding: 3% 4%;
     }
 }
+

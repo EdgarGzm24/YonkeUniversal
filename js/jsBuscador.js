@@ -8,7 +8,7 @@ function buscar_datos(consulta){
 		data: {consulta: consulta},
 	})
 	.done(function(respuesta){
-		$("#caja_autos").html(respuesta);
+		$("#seccionAutos").html(respuesta);
 	})
 	.fail(function(){
 		console.log("Error");
@@ -24,5 +24,3 @@ $(document).on('keyup','#auto', function(){
 		buscar_datos();
 	}
 });
-
-

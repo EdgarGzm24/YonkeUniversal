@@ -1,18 +1,12 @@
 <?php
+    require_once("../conexion.php");
+    require_once("funciones.php");
+
     session_start();
     $usuario = $_SESSION['user'];
 
     if(!isset($usuario)){
-        header("location: ../Index.php");
-    }
-    require_once("../conexion.php");
-    require_once("funciones.php");
-
-    function filtrado($datos){
-        $datos = trim($datos); // Elimina espacios antes y después de los datos
-        $datos = stripslashes($datos); // Elimina backslashes \
-        $datos = htmlspecialchars($datos); // Traduce caracteres especiales en entidades HTML
-        return $datos;
+        header("location: ../");
     }
 
     if (isset($_POST['submit'])) {
@@ -30,42 +24,47 @@
         if ($stmt = $conexion->prepare("INSERT INTO tbautos(usuario, nombreauto, marca, modelo, anio, estado, cilindros, Motor, transmision) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")){
             $stmt->bind_param('isssssiss', $id_usuario, $nombreauto, $marca, $modelo, $anio, $estado, $cilindros, $Motor, $transmision);
             $stmt->execute();
-        }
-            // Iniciamos sentencia preparada
-        if ($stmt = $conexion->prepare("SELECT MAX(id) as id FROM tbautos")) {
-            $stmt->execute();
-            // Vinculamos variables a columnas
-            $stmt->bind_result($id);
-            // Obtenemos los valores
-            $stmt->fetch();
-            // Guardamos nuestro valor
-            $id_publicacion = $id;
-            // Cerramos la sentencia preparada
-            $stmt->close();
-        }
-
-        $f=1;
-        $cantidad = count($_FILES['image']['tmp_name']);
-        for($i=0; $i < $cantidad; $i++){
-                //Comprobamos si el fichero es una imagen
-            if ($_FILES['image']['type'][$i]=='image/png' || $_FILES['image']['type'][$i]=='image/jpeg') {
-
-                $extension = pathinfo($_FILES["image"]["name"][$i], PATHINFO_EXTENSION);
-                $nuevo_nombre = "auto_".date("Ymd_his")."$f.".$extension;
-                $nueva_direccion = "../img/".basename($nuevo_nombre);
-                move_uploaded_file($_FILES["image"]["tmp_name"][$i], $nueva_direccion);
-                
-                $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
-                imagejpeg($imagen_optimizada, $nueva_direccion);
-
-                $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
-                $stmt->bind_param('isi', $id_publicacion,$nuevo_nombre,$f);
+    
+                // Iniciamos sentencia preparada
+            if ($stmt = $conexion->prepare("SELECT MAX(id) as id FROM tbautos")) {
                 $stmt->execute();
+                // Vinculamos variables a columnas
+                $stmt->bind_result($id);
+                // Obtenemos los valores
+                $stmt->fetch();
+                // Guardamos nuestro valor
+                $idAuto = $id;
+                // Cerramos la sentencia preparada
+                $stmt->close();
             }
-            $f++;
+
+            $carpeta = "../img/autos/$idAuto/";
+            crearCarpeta($carpeta);
+
+            for($i=1; $i <= count($_FILES); $i++){
+                if($_FILES['foto_'.$i]['size']> 0){
+                    if ($_FILES['foto_'.$i]['type']=='image/png' || $_FILES['foto_'.$i]['type']=='image/jpeg') {
+
+                        $extension = pathinfo($_FILES["foto_$i"]["name"], PATHINFO_EXTENSION);
+                        $nuevo_nombre = "auto_".date("Ymd_his")."$i.".$extension;
+                        $nueva_direccion = $carpeta.basename($nuevo_nombre);
+
+                         move_uploaded_file($_FILES["foto_$i"]["tmp_name"], $nueva_direccion);
+
+                        $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
+                        imagejpeg($imagen_optimizada, $nueva_direccion);
+
+                        $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
+                        $stmt->bind_param('isi', $idAuto,$nuevo_nombre,$i);
+                        $stmt->execute();
+                    }
+                }
+            }
+            echo  json_encode(['mensaje'=>'Se subieron los datos correctamente!','estado'=>true]);
+            $conexion->close();
+        } else {
+            echo  json_encode(['mensaje'=>'Hubo un error al subir los datos!','estado'=>false]);
         }
-        $conexion->close();
-        
     }
 
 ?>

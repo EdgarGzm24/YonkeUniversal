@@ -1,21 +1,49 @@
 <?php
 
-session_start();
-$usuario = $_SESSION['user'];
+    require_once '../conexion.php';
+    require_once 'funciones.php';
 
-if(!isset($usuario)){
-    header("location: ../Index.php");
-}
+    session_start();
+    $usuario = $_SESSION['user'];
+
+    if(!isset($usuario)){
+        header("location: ../");
+    }
+
+    if(isset($_GET['edit_id']) && !empty($_GET['edit_id'])){
+
+    $id = $_GET['edit_id'];
+
+    $stmt_edit = $conexion->prepare("SELECT * FROM tbautos WHERE id = ?");
+    $stmt_edit->bind_Param('i', $id);
+    $stmt_edit->execute();    
+    $resultado = $stmt_edit->get_result();
+    $edit_row = $resultado->fetch_assoc();
+
+    $stmt_img = $conexion->prepare("SELECT nombre, numero FROM imagenes WHERE idAuto = ?");
+    $stmt_img->bind_Param('i', $id);
+    $stmt_img->execute();    
+    $grupoImg = $stmt_img->get_result();
+
+        while($img_row = $grupoImg->fetch_assoc()){
+            $nombres[] = $img_row['nombre'];
+            $numeros[] = $img_row['numero'];
+        }
+    }
+
+    @$foto1 = verificar(1,$numeros,$nombres,$id);
+    @$foto2 = verificar(2,$numeros,$nombres,$id);
+    @$foto3 = verificar(3,$numeros,$nombres,$id);
+    @$foto4 = verificar(4,$numeros,$nombres,$id);
+    @$foto5 = verificar(5,$numeros,$nombres,$id);
+    @$foto6 = verificar(6,$numeros,$nombres,$id);
 
 ?>
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
+<!DOCTYPE html>
+<html class="no-js" lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Crear auto | Yonke Universal</title>
+    <title>Añadir auto | Yonke Universal</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     
     <link rel="icon" type="image/png" href="../img/icon/engrane.png"/>
@@ -45,13 +73,13 @@ if(!isset($usuario)){
                 </li>
                 <li class="menu-title">Pagina principal</li><!-- /.menu-title -->
                 <li class="menu-item">
-                    <a href="../"><i class="menu-icon fas fa-home"></i>Inicio </a>
+                    <a href="/"><i class="menu-icon fas fa-home"></i>Inicio </a>
                 </li>
                 <li class="menu-item">
                     <a href="../Buscador.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
                 </li>
                 <li class="menu-item">
-                    <a href="../contactos/Index.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
+                    <a href="../Contactanos.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -75,7 +103,7 @@ if(!isset($usuario)){
                         <img class="user-avatar rounded-circle" src="images/admin.png" alt="User Avatar">
                     </a>
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar sesion</a>
+                        <a class="nav-link" href="cerrarSesion.php"><i class="fas fa-power-off"></i>Cerrar sesion</a>
                     </div>
                 </div>
 
@@ -97,92 +125,105 @@ if(!isset($usuario)){
                     </div>
                     <div class="card-body">
                             <form method="post" enctype="multipart/form-data" id="frmAjax">
-                              <input type="hidden" name="usuario" value="<?php echo $usuario; ?>">
+                              <input type="hidden" name="usuario" value="<?php echo @$usuario; ?>">
+                              <input type="hidden" name="id_registro" value="<?php echo @$edit_row['id']; ?>">
 
                               <div class="form-row">  
                                 <div class="form-group col-md-3">
-                                  <input type="text" class="campo-subir nomCom" name="nombreauto" id="inputNombre" placeholder="Nombre completo del vehiculo" readonly>
+                                  <input type="text" value="<?php echo @$edit_row['nombreauto']; ?>" class="campo-subir nomCom" name="nombreauto" id="inputNombre" placeholder="Nombre completo del vehiculo" readonly>
                                 </div>
                               </div>
                               <div class="form-row">
                                 <div class="form-group col-md-3">
-                                  <input type="text" class="campo-subir width" name="marca" id="inputMarca" placeholder="Marca" onkeyup="enviarTexto()" required>
+                                  <input type="text" value="<?php echo @$edit_row['marca']; ?>" class="campo-subir width" name="marca" id="inputMarca" placeholder="Marca" onkeyup="enviarTexto()" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                  <input type="text" class="campo-subir width" name="modelo" id="inputModelo" placeholder="Modelo" onkeyup="enviarTexto()" required>
+                                  <input type="text" value="<?php echo @$edit_row['modelo']; ?>" class="campo-subir width" name="modelo" id="inputModelo" placeholder="Modelo" onkeyup="enviarTexto()" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                  <input type="number" class="campo-subir anio" name="anio" id="inputAnio" placeholder="Año" onkeyup="enviarTexto()" required>
+                                  <input type="number" value="<?php echo @$edit_row['anio']; ?>" class="campo-subir anio" name="anio" id="inputAnio" placeholder="Año" onkeyup="enviarTexto()" required>
                                 </div>
                               </div>
                               <div class="form-row">
                                 <div class="form-group col-md-2">
-                                  <input type="text" class="campo-subir width" name="estado" id="inputEstado" placeholder="Estado" required>
+                                  <input type="text" value="<?php echo @$edit_row['estado']; ?>" class="campo-subir width" name="estado" id="inputEstado" placeholder="Estado" required>
                                 </div>
                                 <div class="form-group col-md-2">
-                                  <input type="text" class="campo-subir width" name="cilindros" id="inputCilin" placeholder="Cilindros" required>
+                                  <input type="text" value="<?php echo @$edit_row['cilindros']; ?>" class="campo-subir width" name="cilindros" id="inputCilin" placeholder="Cilindros" required>
                                 </div>
                                 <div class="form-group col-md-2">
-                                  <input type="text" class="campo-subir width" name="Motor" id="inputMotor" placeholder="Motor" required>
+                                  <input type="text" value="<?php echo @$edit_row['Motor']; ?>" class="campo-subir width" name="Motor" id="inputMotor" placeholder="Motor" required>
                                 </div>
                                 <div class="form-group col-md-2">
-                                  <input type="text" class="campo-subir width" name="transmision" id="inputTrans" placeholder="Transmision" required>
+                                  <input type="text" value="<?php echo @$edit_row['transmision']; ?>" class="campo-subir width" name="transmision" id="inputTrans" placeholder="Transmision" required>
                                 </div>
                               </div>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-1" class="inputfile inputfile-2" accept="image/*" required/>
+                                    <input type="file" name="foto_1" id="file-1" class="inputfile inputfile-2" accept="image/*" required/>
                                     <label for="file-1"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-1">
-                                        <img src="" alt="" class="image-preview__img">
+                                    <div class="image-preview">
+                                        <img src="<?= $foto1 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa principal</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-2" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="foto_2" id="file-2" class="inputfile inputfile-2" accept="image/*"/>
                                     <label for="file-2"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-2">
-                                        <img src="" alt="" class="image-preview__img">
+                                    <div class="image-preview">
+                                         <img src="<?= $foto2 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-3" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="foto_3" id="file-3" class="inputfile inputfile-2" accept="image/*"/>
                                     <label for="file-3"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-3">
-                                        <img src="" alt="" class="image-preview__img">
+                                    <div class="image-preview">
+                                        <img src="<?= $foto3 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-4" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="foto_4" id="file-4" class="inputfile inputfile-2" accept="image/*"/>
                                     <label for="file-4"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-4">
-                                        <img src="" alt="" class="image-preview__img">
+                                    <div class="image-preview">
+                                        <img src="<?= $foto4 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-5" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="foto_5" id="file-5" class="inputfile inputfile-2" accept="image/*"/>
                                     <label for="file-5"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-5">
-                                        <img src="" alt="" class="image-preview__img">
+                                    <div class="image-preview">
+                                        <img src="<?= $foto5 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="file" name="image[]" id="file-6" class="inputfile inputfile-2" accept="image/*"/>
+                                    <input type="file" name="foto_6" id="file-6" class="inputfile inputfile-2" accept="image/*"/>
                                     <label for="file-6"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
-                                    <div class="image-preview" id="image-preview-6">
-                                        <img src="" alt="Image Preview" class="image-preview__img">
+                                    <div class="image-preview">
+                                        <img src="<?= $foto6 ?>" alt="" class="image-preview__img">
                                         <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
                                     </div>
                                 </div>
                               </div>
-
+                              
                               <input type="hidden" name="submit" id="Guardar">
                               <input type="submit" id="btnGuardar" class="btn btn-dark">
+                              
+                              <?php if(isset($_GET['edit_id'])) { ?>
+                                  <input type="hidden" name="update" id="Actualizar">
+                                  <input type="submit" value="Actualizar" id="btnActuaz" class="btn btn-primary">
+                              <?php } ?>
                             </form>
+                            
+                            <div class="form-group" id="process">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div> <!-- /.card -->
             </div>  <!-- /.col-lg-8 -->
@@ -220,13 +261,11 @@ if(!isset($usuario)){
 
             document.getElementById("inputNombre").value = marca + " " + modelo + " " + anio;
         }
-
+        
     </script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/insertar.js"></script>
-    <script src="assets/js/ImagePreview.js"></script>
-    <!--===============================================================================================-->
-    <script src="assets/js/custom-file-input.js"></script>
+    <script src="assets/js/customFile.js"></script>
+    <script src="assets/js/funcionesAjax.js"></script>
     <!--===============================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--===============================================================================================-->

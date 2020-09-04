@@ -202,6 +202,7 @@ aside.left-panel:hover {
     line-height: 26px;
     padding: 10px 0;
     position: relative;
+    font-weight: 550;
     width: 100%;
 }
 .navbar .navbar-nav li > a:hover,
@@ -993,7 +994,10 @@ header .form-inline .search-form.close {
     display: none;
     width: 100%;
 }
-
+#process{
+    display: none;
+    padding: 2% 0;
+}
 /* Footer */
 footer.site-footer {
     padding: 0 1.875em;

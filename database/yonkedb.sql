@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-08-2020 a las 21:57:45
+-- Tiempo de generación: 04-09-2020 a las 11:13:02
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -39,22 +39,27 @@ CREATE TABLE `imagenes` (
 --
 
 INSERT INTO `imagenes` (`idImagen`, `idAuto`, `nombre`, `numero`) VALUES
-(12, 38, 'auto_20200813_1234091.jpg', 1),
-(13, 39, 'auto_20200813_1251421.jpg', 1),
-(14, 40, 'auto_20200813_0845051.jpg', 1),
-(21, 65, 'auto_20200821_0340521.jpg', 1),
-(22, 65, 'auto_20200821_0340522.jpg', 2),
-(23, 65, 'auto_20200821_0340523.jpg', 3),
-(24, 65, 'auto_20200821_0340524.jpg', 4),
-(25, 65, 'auto_20200821_0340535.jpg', 5),
-(26, 65, 'auto_20200821_0340536.jpg', 6),
-(27, 66, 'auto_20200821_0349021.jpg', 1),
-(28, 66, 'auto_20200821_0349022.jpg', 2),
-(29, 66, 'auto_20200821_0349023.jpg', 3),
-(30, 66, 'auto_20200821_0349024.jpg', 4),
-(31, 66, 'auto_20200821_0349035.jpg', 5),
-(32, 66, 'auto_20200821_0349036.jpg', 6),
-(33, 67, 'auto_20200821_0349481.jpg', 1);
+(21, 65, 'auto_20200901_0826191.jpg', 1),
+(22, 65, 'auto_20200901_0826192.jpg', 2),
+(23, 65, 'auto_20200901_0826203.jpg', 3),
+(24, 65, 'auto_20200901_0826204.jpg', 4),
+(27, 66, 'auto_20200901_0829131.jpg', 1),
+(28, 66, 'auto_20200901_0829132.jpg', 2),
+(29, 66, 'auto_20200901_0829133.jpg', 3),
+(30, 66, 'auto_20200901_0829134.jpg', 4),
+(33, 67, 'auto_20200901_0833051.jpg', 1),
+(43, 67, 'auto_20200901_0833052.jpg', 2),
+(44, 67, 'auto_20200901_0833053.jpg', 3),
+(45, 67, 'auto_20200901_0833054.jpg', 4),
+(46, 78, 'auto_20200902_1024471.png', 1),
+(47, 79, 'auto_20200902_1025251.png', 1),
+(48, 80, 'auto_20200902_1025411.png', 1),
+(49, 81, 'auto_20200904_0748501.jpg', 1),
+(50, 82, 'auto_20200904_0750371.jpg', 1),
+(51, 83, 'auto_20200904_0814331.jpg', 1),
+(52, 84, 'auto_20200904_0816261.jpg', 1),
+(53, 85, 'auto_20200904_0821551.jpg', 1),
+(54, 86, 'auto_20200904_0826341.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -81,12 +86,18 @@ CREATE TABLE `tbautos` (
 --
 
 INSERT INTO `tbautos` (`id`, `usuario`, `nombreauto`, `marca`, `modelo`, `anio`, `estado`, `cilindros`, `Motor`, `transmision`, `fecha`) VALUES
-(38, 1, 'Nissan Sentra 2020', 'Nissan', 'Sentra', '2020', 'Destruido', 6, 'AZ14P', 'Electrica', '2020-08-12 22:34:09'),
-(39, 1, 'Nissan Sentra 4543', 'Nissan', 'Sentra', '4543', 'fgfg', 0, 'ffgfgfg', '556', '2020-08-12 22:51:42'),
-(40, 1, 'Nissan Sentra 2020', 'Nissan', 'Sentra', '2020', 'Destruido', 4, 'AZ14P', 'Electrica', '2020-08-13 06:45:05'),
-(65, 2, 'Nemo neque proiden Earum tenetur sapien 67', 'Nemo neque proiden', 'Earum tenetur sapien', '67', 'Aliquip ipsum elit', 0, 'Cupiditate quis maio', 'Inventore illum iur', '2020-08-21 01:40:52'),
-(66, 2, 'Laborum Dolore eum Cillum incidunt est 92', 'Laborum Dolore eum', 'Cillum incidunt est', '92', 'Tenetur esse et duci', 0, 'Quasi sint maxime e', 'Rerum assumenda minu', '2020-08-21 01:49:02'),
-(67, 2, 'Voluptatem doloremqu Ad cillum voluptatib 4', 'Voluptatem doloremqu', 'Ad cillum voluptatib', '4', 'Rerum id quia iure', 0, 'Molestiae esse et vo', 'Harum quibusdam minu', '2020-08-21 01:49:48');
+(65, 2, 'Nissan Altima 2012', 'Nissan', 'Altima', '2012', 'Destruido', 6, 'SVT 6CIL', 'Electrica', '2020-08-21 01:40:52'),
+(66, 1, 'Nissan Versa 2013', 'Nissan', 'Versa', '2013', 'Churido', 6, 'SVT 6 CIL', 'Automatica', '2020-08-21 01:49:02'),
+(67, 2, 'Ford Mustang 1967', 'Ford', 'Mustang', '1967', 'Explotado', 6, 'Desconocido', 'Combustion interna', '2020-08-21 01:49:48'),
+(78, 1, 'Nissan Versa 2012', 'Quos eaque aliquam m', 'Repellendus Ab veni', '91', 'Esse molestiae saepe', 0, 'Quia eius exercitati', 'Reiciendis libero su', '2020-09-02 08:24:47'),
+(79, 1, 'Nissan Versa 2012', 'Volupas cillum eos', 'Excepteur atque alia', '14', 'Soluta ut Nam harum', 0, 'Earum molestias cons', 'Recusandae Mollit c', '2020-09-02 08:25:25'),
+(80, 1, 'Nissan Versa 2012', 'Omis consequat Sed', 'Et architecto facere', '66', 'Rerum laudantium fu', 0, 'Duis quia sit nihil', 'Dolores aspernatur m', '2020-09-02 08:25:41'),
+(81, 1, 'Consectetu Ut mptas ve 38', 'Consectetu', 'Ut mptas ve', '38', 'magni null', 0, 'Tetium d', 'Luamut po', '2020-09-04 05:48:49'),
+(82, 1, 'Archiidem hi Sunt ut excepturi en 8', 'Archiidem hi', 'Sunt ut excepturi en', '8', 'Magna rerum officiis', 0, 'Libero laborum Hic', 'Corrupti voluptas a', '2020-09-04 05:50:37'),
+(83, 1, 'Error hfugiat r Dolores optio et ma 53', 'Error hfugiat r', 'Dolores optio et ma', '53', 'Quae velit magni in', 0, 'Et in esse nesciunt', 'Cillum ut earum aut', '2020-09-04 06:14:33'),
+(84, 1, 'Quis magnam con Quis aut qui a accus 10', 'Quis magnam con', 'Quis aut qui a accus', '10', 'Dolore quo qui aut c', 0, 'Cupiditate totam ea', 'Provident porro est', '2020-09-04 06:16:25'),
+(85, 1, 'Voluptate elit a Dolor in omnis qui v 54', 'Voluptate elit a', 'Dolor in omnis qui v', '54', 'Ipsam qui omnis est', 0, 'Quo eius modi sit e', 'Recusandae Aut ipsa', '2020-09-04 06:21:55'),
+(86, 1, 'Iure aperiam Tempor eu assumenda  5', 'Iure aperiam', 'Tempor eu assumenda', '5', 'Impedit pariatur I', 0, 'Maxime voluptatem I', 'Consequat Quam exer', '2020-09-04 06:26:34');
 
 -- --------------------------------------------------------
 
@@ -141,13 +152,13 @@ ALTER TABLE `tbusuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `tbautos`
 --
 ALTER TABLE `tbautos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `tbusuarios`

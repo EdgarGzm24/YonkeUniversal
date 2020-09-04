@@ -1,7 +1,4 @@
-<?php
-session_start();
-
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,10 +22,6 @@ session_start();
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <!--===============================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-    <!--===============================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
-    
 </head>
 
 <body>
@@ -36,91 +29,22 @@ session_start();
     <a href="https://api.whatsapp.com/send?phone=526461177603&text=Hola%21%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20pieza%20de%20un%20auto." class="float" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
     </a>
-<!--====================================VENTANA MODAL===================================================-->
-<div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-5">
-            <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails"
-              data-ride="carousel">
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="img/sentra1.jpg" alt="Primer slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra2.jpg" alt="Segundo slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra3.jpg" alt="Tercer slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra4.jpg" alt="Cuarto slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra5.jpg" alt="Quinto slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="img/sentra6.jpg" alt="Sexto slide">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-thumb" data-slide-to="0" class="active">
-                  <img src="img/sentra1.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="1">
-                  <img src="img/sentra2.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="2">
-                  <img src="img/sentra3.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="3">
-                  <img src="img/sentra4.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="4">
-                  <img src="img/sentra5.jpg" width="60">
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="5">
-                  <img src="img/sentra6.jpg" width="60">
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <h2><strong>Nissan Sentra 2012</strong></h2>
-                <p>Estado: </p>
-                <p>Cilindros: </p>
-                <p>Motor: </p>
-                <p>Transmision: </p>
-                <a class="btn-close-popup" data-dismiss="modal"><i class="fas fa-times"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!--================================================= MENU ==============================================-->   
+    <div id="modalAuto">
+        <!--Aqui estara el popUp con la informacion del auto-->
+    </div>
+
+<!-- MENU -->   
 <div class="contenedorTotal">
-   <header class="header">
+   <header>
       <div class="contHeader">
         <div class="logo">
-           <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
+           <a class="navbar-brand" href="../"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png" alt="..."></a>
         </div>
         <div class="informacion">
            <div class="columnaDir">
                <i class="fas fa-map-marker-alt"></i>
-               <p>Av. Moctezuma 991 <br>Zona Centro 22800 Ensenada B.C.</p>
+               <p>Av. Moctezuma 991 Zona Centro 22800 Ensenada B.C.</p>
            </div>
            <div class="columnaHorario">
                 <i class="far fa-clock"></i>
@@ -135,10 +59,11 @@ session_start();
         </div>
        </div>
    </header>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+   
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+      <a class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
-      </button>
+      </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <?php if(isset($_SESSION['user'])){ ?>
@@ -151,13 +76,13 @@ session_start();
               <a class="dropdown-item" href="admin/">Ver autos</a>
               <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
+              <a class="dropdown-item" href="admin/cerrarSesion.php"><i class="fas fa-power-off"></i>  Cerrar sesion</a>
             </div>
           </li>
           <?php } ?>
           
           <li class="nav-item active">
-            <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Buscador.php">Autos</a>
@@ -168,7 +93,8 @@ session_start();
         </ul>
       </div>
     </nav>
-<!--=================================================SLIDER==============================================-->  
+    
+    <!--SLIDER-->  
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -195,13 +121,12 @@ session_start();
       </div>
     </div>
     
-<!--=================================================PUNTOS CENTRALES=======================================--> 
-
- <section class="services-section">
-   <div class="inner-width">
+    <!-- PUNTOS CENTRALES --> 
+    <section class="services-section">
+    <div class="inner-width">
         <h1>Nuestros <span class="textColor">Servicios</span></h1>
      <div class="services owl-carousel">
-            
+
           <div class="service">
             <div class="service-icon">
               <i class="fas fa-box-open"></i>
@@ -245,7 +170,7 @@ session_start();
       </div>
     </section>
      
-<!--=================================================AUTOS RECIENTES========================================-->  
+    <!-- AUTOS RECIENTES -->  
     <div class="containerAll-Autos">
        <div class="tituloAutos">
            <h1>RECIEN LLEGADOS</h1>
@@ -256,7 +181,7 @@ session_start();
                 require_once("conexion.php");
              
                 // Iniciamos sentencia preparada
-                $stmt = $conexion->prepare("SELECT nombreauto, nombre  FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC LIMIT 3");
+                $stmt = $conexion->prepare("SELECT id, nombreauto, nombre  FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto AND imagenes.numero=1 ORDER BY id DESC LIMIT 3");
                 $stmt->execute();
                 $resultado = $stmt->get_result();
 
@@ -264,10 +189,10 @@ session_start();
                     // Obtenemos los valores
                     while ($fila = $resultado->fetch_assoc()) {
                             echo "<div class='card'>
-                                    <img src='img/".$fila['nombre']."' alt=''>
+                                    <img src='img/autos/".$fila['id']."/".$fila['nombre']."' alt=''>
                                     <h4>".$fila['nombreauto']."</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, mollitia.</p>
-                                    <a data-toggle='modal' data-target='#modalQuickView'>MAS DETALLES</a>
+                                    <a href='javascript:void(0)' onclick='mostrarDetalles(".$fila['id'].")'>MAS DETALLES</a>
                                    </div>";
                     }
                  } 
@@ -282,126 +207,83 @@ session_start();
               <p>Tenemos un buscador totalmente personalizado para tus necesidades con tan solo escribir el año, marca o modelo tendras un listado de todos los autos parecidos a los de tu busqueda que podrian interesarte</p>
             </div>
             <div class="botonBusc">
-              <a href="Buscador.php#Buscador" class="button"><i class="fas fa-search"></i> Ver mas</a>
+              <a href="Buscador.php" class="button"><i class="fas fa-search"></i> Ver mas</a>
             </div>
 		  </div>    
     </div>
-    
-<!--================================================GALERIA AUTOS========================================--> 
+    <!-- GALERIA AUTOS --> 
 
-<div class="container gallery-container">
 
-    <h1>Autopartes</h1>
 
-    <p class="page-description text-center">A continuacion puede observar con detenimiento las distintas opciones que tenemos a la venta.</p>
-    
-    <div class="tz-gallery">
-
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/sentra1.jpg">
-                    <img src="img/sentra1.jpg" >
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<!--=====================================================FOOTER=============================================-->
+    <!-- FOOTER -->
     <footer>
-       <div class="container-footer-all">
-            <div class="container-body">
-                <div class="colum1 minimizar">
-                    <h1>Informacion de la compañia</h1>
-                    <p>Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea de lo que puede ir aqui, eso lo pondre hasta que me den la descripcion mientras estara este texto llenando el espacio de la informacion de la compañia.</p>
-                </div>
-                <div class="colum2">
-                    <h1 class="minimizar">Redes Sociales</h1>
-                    <div class="rows">   
-                        <a href=""><i class="fab fa-facebook-square"></i></a>
-                        <label class="minimizar">Siguenos en <a href=""> Facebook</a></label>
-                    </div>
-                    <div class="rows">   
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <label class="minimizar">Siguenos en <a href=""> Instagram</a></label>
-                    </div>
-                    <div class="rows">  
-                        <a href=""><i class="fab fa-whatsapp"></i></a>
-                        <label class="minimizar">Escribenos por <a href=""> WhatsApp</a></label>
-                    </div>
-                </div>
-                <div class="colum3">
-                    <h1 class="minimizar">Informacion de Contacto</h1>
-                    <div class="row2">
-                        <a href=""><i class="fas fa-map-marker-alt"></i></a>
-                        <label>Av Moctezuma 991,
-                        Zona Centro 22800
-                        Ensenada B.C.</label>
-                    </div>
-                    <div class="row2 minimizar">
-                        <a href=""><i class="fas fa-phone-alt"></i></a>
-                        <label>+52 (646)-260-41-30</label>
-                    </div>
-                    <div class="row2 minimizar">
-                        <a href=""><i class="far fa-envelope"></i></a>
-                        <label>edjar45@hotmail.com</label>
-                    </div>
+        <div class="inner-footer">
+
+            <div class="footer-items phone">
+                <h2><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="70%"></h2>
+                <div class="borde"></div>
+                <p>
+                    Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea.
+                </p>
+            </div>
+
+            <div class="footer-items phone">
+                <h2>Links rapidos</h2>
+                <div class="borde"></div>
+                <ul>
+                    <a href="../"><li><i class="fas fa-angle-right"></i>Inicio</li></a>
+                    <a href="../YonkeUniversal/Buscador.php"><li><i class="fas fa-angle-right"></i>Autos</li></a>
+                    <a href="../YonkeUniversal/Contactanos.php"><li><i class="fas fa-angle-right"></i>Contacto</li></a>
+                    
+                    <?php if(isset($_SESSION['user'])){ ?>
+                        <a href="../YonkeUniversal/admin/"><li><i class="fas fa-angle-right"></i>Lista autos</li></a>
+                        <a href="../YonkeUniversal/admin/CrearProductos.php"><li><i class="fas fa-angle-right"></i>Añadir autos</li></a>
+                    <?php } ?>
+                </ul>
+            </div>
+
+            <div class="footer-items">
+                <h2>Contactanos</h2>
+                <div class="borde"></div>
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt dir"></i>
+                        Av Moctezuma 991,Zona Centro 
+                        22800 Ensenada B.C.
+                    </li>
+                    <li><i class="fas fa-phone-alt dir"></i>(646)-260-41-30</li>
+                    <li><i class="far fa-envelope dir"></i>edjar45@hotmail.com</li>
+                </ul>
+                <div class="social-media">
+                    <a href=""><i class="fab fa-facebook-square Face"></i></a>
                 </div>
             </div>
+
         </div>
-        <div class="container-footer">
-               <div class="footer">
-                    <div class="copyright">
-                        © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="8%"></a>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-bottom">
+           <div class="copyright">
+               © 2020 Todos los Derechos Reservados
+           </div>
+        </div>
     </footer>
 </div>
    
+    <!--==================================================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <!--===============================================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
+    <!--==================================================================================================-->
     <script>
+        function mostrarDetalles(id){
+
+            var ruta = 'popUpAuto.php?id=' + id;
+            $.get(ruta, function (data) {
+               $('#modalAuto').html(data);
+               $('#modalQuickView').modal('show');
+            });
+
+        }
+
       $(".services").owlCarousel({
         margin:20,
         loop:true,
@@ -421,13 +303,6 @@ session_start();
         }
       });
     </script>
-    <!--==================================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-    <script>
-        baguetteBox.run('.tz-gallery');
-    </script>
-    <!--==================================================================================================-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <!--==================================================================================================-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!--==================================================================================================-->

@@ -202,6 +202,7 @@ aside.left-panel:hover {
     line-height: 26px;
     padding: 10px 0;
     position: relative;
+    font-weight: 550;
     width: 100%;
 }
 .navbar .navbar-nav li > a:hover,
