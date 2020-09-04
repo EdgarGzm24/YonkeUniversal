@@ -1,15 +1,9 @@
 <?php
-    session_start();
-    $usuario = $_SESSION['user'];
 
-    if(!isset($usuario)){
-        header("location: ../Index.php");
-    }
-
-    $id = 66;
+    $id = $_REQUEST['id'];
     require_once 'conexion.php';
 
-    $stmt = $conexion->prepare("SELECT nombreauto, estado, cilindros, Motor, transmision, GROUP_CONCAT(imagenes.nombre SEPARATOR '|') AS images FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.id = ?");
+    $stmt = $conexion->prepare("SELECT id, nombreauto, estado, cilindros, Motor, transmision, GROUP_CONCAT(imagenes.nombre SEPARATOR '|') AS images FROM tbautos INNER JOIN imagenes ON tbautos.id = imagenes.idAuto WHERE tbautos.id = ?");
     $stmt->bind_Param('i', $id);
     $stmt->execute();
 
@@ -22,19 +16,20 @@ echo "
     <div class='modal-content'>
       <div class='modal-body'>
         <div class='row'>
-          <div class='col-lg-5'>
-
-            <div id='carousel-thumb' class='carousel slide carousel-fade carousel-thumbnails'
-              data-ride='carousel'>
+          <div class='col-lg-7'>
+            <div id='carousel-thumb' class='carousel slide carousel-fade carousel-thumbnails' data-ride='carousel'>
 
               <div class='carousel-inner' role='listbox'>";
 
                 $imagen = explode("|", $info['images']);
-
+                $cont = 0;
                 foreach($imagen as $imagenRow){
-                    echo "<div class='carousel-item active'>
-                      <img class='d-block w-100' src='img/".$imagenRow."' >
-                    </div>";
+                    
+                    $cont == 0 ? $clase = 'active' : $clase = '';
+                    echo "<div class='carousel-item ".$clase."'>
+                              <img class='d-block w-100' src='img/autos/".$info['id']."/".$imagenRow."' >
+                          </div>";
+                    $cont++;
                 }
 
               echo "</div>
@@ -52,22 +47,23 @@ echo "
             foreach($imagen as $imagenRow){
             $i = 0;    
                 echo "<li data-target='#carousel-thumb' data-slide-to='".$i."'>
-                      <img src='img/".$imagenRow."' width='60'>
+                      <img src='img/autos/".$info['id']."/".$imagenRow."' width='60'>
                     </li>";
             $i++;
             }  
 
             echo "</ol>
             </div>
-            <!--/.Carousel Wrapper-->
+            
           </div>
-          <div class='col-lg-7'>
+          <a href='' class='btn-close-popup' data-dismiss='modal'><i class='fas fa-times'></i></a>
+          <div class='col-lg-5'>
             <h2><strong>".$info['nombreauto']."</strong></h2>
-                <p>Estado: ".$info['estado']."</p>
-                <p>Cilindros: ".$info['cilindros']."</p>
-                <p>Motor: ".$info['Motor']."</p>
-                <p>Transmision: ".$info['transmision']."</p>
-                <a class='btn-close-popup' data-dismiss='modal'><i class='fas fa-times'></i></a>
+                <p><strong>Estado:</strong><br> ".$info['estado']."</p>
+                <p><strong>Cilindros:</strong><br> ".$info['cilindros']."</p>
+                <p><strong>Motor:</strong><br> ".$info['Motor']."</p>
+                <p><strong>Transmision:</strong><br> ".$info['transmision']."</p>
+                
           </div>
         </div>
       </div>
@@ -76,3 +72,8 @@ echo "
 </div>";
 
 ?>
+  
+
+  
+  
+
