@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,6 +25,10 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <!--===============================================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <!--===============================================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
+    
 </head>
 
 <body>
@@ -34,17 +41,17 @@
         <!--Aqui estara el popUp con la informacion del auto-->
     </div>
 
-<!-- MENU -->   
+<!--================================================= MENU ==============================================-->   
 <div class="contenedorTotal">
-   <header>
+   <header class="header">
       <div class="contHeader">
         <div class="logo">
-           <a class="navbar-brand" href="../"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png" alt="..."></a>
+           <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
         </div>
         <div class="informacion">
            <div class="columnaDir">
                <i class="fas fa-map-marker-alt"></i>
-               <p>Av. Moctezuma 991 Zona Centro 22800 Ensenada B.C.</p>
+               <p>Av. Moctezuma 991 <br>Zona Centro 22800 Ensenada B.C.</p>
            </div>
            <div class="columnaHorario">
                 <i class="far fa-clock"></i>
@@ -59,11 +66,10 @@
         </div>
        </div>
    </header>
-   
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-      <a class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
-      </a>
+      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <?php if(isset($_SESSION['user'])){ ?>
@@ -76,13 +82,13 @@
               <a class="dropdown-item" href="admin/">Ver autos</a>
               <a class="dropdown-item" href="admin/CrearProductos.php">Crear nuevo auto</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="admin/cerrarSesion.php"><i class="fas fa-power-off"></i>  Cerrar sesion</a>
+              <a class="dropdown-item" href="admin/cerrarSesion.php">Cerrar sesion</a>
             </div>
           </li>
           <?php } ?>
           
           <li class="nav-item active">
-            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Buscador.php">Autos</a>
@@ -93,8 +99,7 @@
         </ul>
       </div>
     </nav>
-    
-    <!--SLIDER-->  
+<!--=================================================SLIDER==============================================-->  
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -121,12 +126,13 @@
       </div>
     </div>
     
-    <!-- PUNTOS CENTRALES --> 
-    <section class="services-section">
-    <div class="inner-width">
+<!--=================================================PUNTOS CENTRALES=======================================--> 
+
+ <section class="services-section">
+   <div class="inner-width">
         <h1>Nuestros <span class="textColor">Servicios</span></h1>
      <div class="services owl-carousel">
-
+            
           <div class="service">
             <div class="service-icon">
               <i class="fas fa-box-open"></i>
@@ -170,7 +176,7 @@
       </div>
     </section>
      
-    <!-- AUTOS RECIENTES -->  
+<!--=================================================AUTOS RECIENTES========================================-->  
     <div class="containerAll-Autos">
        <div class="tituloAutos">
            <h1>RECIEN LLEGADOS</h1>
@@ -189,7 +195,7 @@
                     // Obtenemos los valores
                     while ($fila = $resultado->fetch_assoc()) {
                             echo "<div class='card'>
-                                    <img src='img/autos/".$fila['id']."/".$fila['nombre']."' alt=''>
+                                    <img src='img/".$fila['nombre']."' alt=''>
                                     <h4>".$fila['nombreauto']."</h4>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, mollitia.</p>
                                     <a href='javascript:void(0)' onclick='mostrarDetalles(".$fila['id'].")'>MAS DETALLES</a>
@@ -207,73 +213,69 @@
               <p>Tenemos un buscador totalmente personalizado para tus necesidades con tan solo escribir el año, marca o modelo tendras un listado de todos los autos parecidos a los de tu busqueda que podrian interesarte</p>
             </div>
             <div class="botonBusc">
-              <a href="Buscador.php" class="button"><i class="fas fa-search"></i> Ver mas</a>
+              <a href="Buscador.php#Buscador" class="button"><i class="fas fa-search"></i> Ver mas</a>
             </div>
 		  </div>    
     </div>
-    <!-- GALERIA AUTOS --> 
+    
+<!--================================================GALERIA AUTOS========================================--> 
 
 
 
-    <!-- FOOTER -->
+<!--=====================================================FOOTER=============================================-->
     <footer>
-        <div class="inner-footer">
-
-            <div class="footer-items phone">
-                <h2><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="70%"></h2>
-                <div class="borde"></div>
-                <p>
-                    Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea.
-                </p>
-            </div>
-
-            <div class="footer-items phone">
-                <h2>Links rapidos</h2>
-                <div class="borde"></div>
-                <ul>
-                    <a href="../"><li><i class="fas fa-angle-right"></i>Inicio</li></a>
-                    <a href="../YonkeUniversal/Buscador.php"><li><i class="fas fa-angle-right"></i>Autos</li></a>
-                    <a href="../YonkeUniversal/Contactanos.php"><li><i class="fas fa-angle-right"></i>Contacto</li></a>
-                    
-                    <?php if(isset($_SESSION['user'])){ ?>
-                        <a href="../YonkeUniversal/admin/"><li><i class="fas fa-angle-right"></i>Lista autos</li></a>
-                        <a href="../YonkeUniversal/admin/CrearProductos.php"><li><i class="fas fa-angle-right"></i>Añadir autos</li></a>
-                    <?php } ?>
-                </ul>
-            </div>
-
-            <div class="footer-items">
-                <h2>Contactanos</h2>
-                <div class="borde"></div>
-                <ul>
-                    <li>
-                        <i class="fas fa-map-marker-alt dir"></i>
-                        Av Moctezuma 991,Zona Centro 
-                        22800 Ensenada B.C.
-                    </li>
-                    <li><i class="fas fa-phone-alt dir"></i>(646)-260-41-30</li>
-                    <li><i class="far fa-envelope dir"></i>edjar45@hotmail.com</li>
-                </ul>
-                <div class="social-media">
-                    <a href=""><i class="fab fa-facebook-square Face"></i></a>
+       <div class="container-footer-all">
+            <div class="container-body">
+                <div class="colum1 minimizar">
+                    <h1>Informacion de la compañia</h1>
+                    <p>Esta compañia se dedica a la venta de piezas y aparatos electronicos con un conjunto de palabras que no tengo ni la menor idea de lo que puede ir aqui, eso lo pondre hasta que me den la descripcion mientras estara este texto llenando el espacio de la informacion de la compañia.</p>
+                </div>
+                <div class="colum2">
+                    <h1 class="minimizar">Redes Sociales</h1>
+                    <div class="rows">   
+                        <a href=""><i class="fab fa-facebook-square"></i></a>
+                        <label class="minimizar">Siguenos en <a href=""> Facebook</a></label>
+                    </div>
+                    <div class="rows">   
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <label class="minimizar">Siguenos en <a href=""> Instagram</a></label>
+                    </div>
+                    <div class="rows">  
+                        <a href=""><i class="fab fa-whatsapp"></i></a>
+                        <label class="minimizar">Escribenos por <a href=""> WhatsApp</a></label>
+                    </div>
+                </div>
+                <div class="colum3">
+                    <h1 class="minimizar">Informacion de Contacto</h1>
+                    <div class="row2">
+                        <a href=""><i class="fas fa-map-marker-alt"></i></a>
+                        <label>Av Moctezuma 991,
+                        Zona Centro 22800
+                        Ensenada B.C.</label>
+                    </div>
+                    <div class="row2 minimizar">
+                        <a href=""><i class="fas fa-phone-alt"></i></a>
+                        <label>+52 (646)-260-41-30</label>
+                    </div>
+                    <div class="row2 minimizar">
+                        <a href=""><i class="far fa-envelope"></i></a>
+                        <label>edjar45@hotmail.com</label>
+                    </div>
                 </div>
             </div>
-
         </div>
-        <div class="footer-bottom">
-           <div class="copyright">
-               © 2020 Todos los Derechos Reservados
-           </div>
-        </div>
+        <div class="container-footer">
+               <div class="footer">
+                    <div class="copyright">
+                        © 2020 Todos los Derechos Reservados | <a href=""><img class="bannerImg" src="img/imagesPage/logoPerron.png" width="8%"></a>
+                    </div>
+                </div>
+            </div>
     </footer>
 </div>
    
-    <!--==================================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-    <!--===============================================================================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
-    <!--==================================================================================================-->
     <script>
+
         function mostrarDetalles(id){
 
             var ruta = 'popUpAuto.php?id=' + id;
