@@ -10,9 +10,13 @@
             $imagen = imagecreatefrompng($rutaimg);  
         elseif($ext == "gif")  
             $imagen = imagecreatefromgif($rutaimg);  
-          
+        
         $x = imagesx($imagen);  
-        $y = imagesy($imagen);  
+        $y = imagesy($imagen); 
+        
+        $marcaDeAgua = imagecreatefrompng("images/YonkeMarcaAgua.png");
+        $marcaX = imagesx($marcaDeAgua);
+        $marcaY = imagesy($marcaDeAgua);
           
         if($x <= $xmax && $y <= $ymax){
             return $imagen;  
@@ -29,6 +33,9 @@
           
         $img2 = imagecreatetruecolor($nuevax, $nuevay);  
         imagecopyresized($img2, $imagen, 0, 0, 0, 0, floor($nuevax), floor($nuevay), $x, $y);  
+        
+        imagecopy($img2, $marcaDeAgua, $nuevax - $marcaX - 10, $nuevay - $marcaY - 10, 0, 0, $marcaX, $marcaY);
+        
         return $img2;
     }
 
