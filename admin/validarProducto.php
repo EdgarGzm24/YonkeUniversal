@@ -53,6 +53,7 @@
 
                         $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
                         imagejpeg($imagen_optimizada, $nueva_direccion);
+                        imagedestroy($imagen_optimizada);
 
                         $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
                         $stmt->bind_param('isi', $idAuto,$nuevo_nombre,$i);
