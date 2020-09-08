@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb {
 	text-align:center;
     font-size:190%;
 	box-shadow: 2px 2px 3px #252525;
-    z-index:100;
+    z-index:2000;
 }
 .float:hover {
 	text-decoration: none;
@@ -423,7 +423,8 @@ header {
 }
 .seccionAutos {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -432,11 +433,11 @@ header {
 
 .seccionAutos .card{
     width: 330px;
-    height: 410px;
+    height: 430px;
     border-radius: 1%;
     box-shadow: 0 2px 2px rgba(0,0,0,.7);
     overflow: hidden;
-    margin: 2%;
+    margin: 5% 2%;
     text-align: center;
     transition: all .25s;
     background-color: #101010;
@@ -459,7 +460,7 @@ header {
     font-family: 'Lemon Milk Light', sans-serif;
 }
 .seccionAutos .card h4, .seccionAutos .card p{
-    color: #767676;
+    color: #7C7C7C;
 }
 
 .seccionAutos .card p{
@@ -487,16 +488,17 @@ header {
 }
 
 .textoBuscador {
-    max-width: 1000px;
-    padding: 3% 2%;
+    max-width: 550px;
+    padding: 4% 3%;
     margin: auto;
     display: flex;
     justify-content: space-between;
 }
-.textoBusc p{
+.textoBusc h3{
     font-family: 'Comfortaa Bold', sans-serif;
-    font-size: 80%;
     color: #7A7676;
+    margin-top: 4%;
+    margin-bottom: 0;
 }
 .button {
     font-family: 'Comfortaa Bold', sans-serif;
@@ -547,15 +549,12 @@ header {
     .textoBuscador {
         justify-content: center;
     }
-    .textoBusc p {
+    .textoBusc h3 {
         display:none;
     }
 }
 
 /*============POP UP IMG==============*/
-.modal{
-    backdrop-filter: blur(3px);
-}
 .modal-content{
     border: none !important;
 }
@@ -658,13 +657,132 @@ ol{
 }
 
 /*============GALERIA AUTO==============*/
-
-
+.GaleriaTitulo {
+    padding-top: 3%;
+    text-align: center;
+}
+.GaleriaTitulo h1 {
+    font-family: "Lemon Milk Medium", sans-serif;
+}
+.GaleriaTitulo span {
+    color: #F23939;
+}
+.GaleriaTitulo p {
+    font-family: "Comfortaa Bold", sans-serif;
+    color: #7A7676;
+}
+.contenedorGaleria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5% 0.5%;
+    flex-wrap: wrap;
+}
+.box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.box:hover {
+    z-index: 1;
+    transform: scale(1.2);
+    box-shadow: 0 25px 40px rgba(0,0,0,.5);
+}
+.imgBox{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.imgBox:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0,0,0,.8);
+    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: all 0.5s;    
+}
+.box:hover .imgBox:before{
+    opacity: 1;
+}
+.imgBox img{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.contenido{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    padding: 3%;
+    align-items: flex-end;
+}
+.contenido h2 {
+    color: #FFF;
+    transition: all .4s;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+    font-family: "Lemon Milk Medium",sans-serif;
+    font-size: 110%;
+    transform: translateY(200px);
+}
+.box:hover .contenido h2 {
+    transform: translateY(0);
+    transition-delay: .4s;
+}
+.contenido p {
+    color: #FFF;
+    transition: all .4s;
+    margin-bottom: .6%;
+    font-family: "Comfortaa Bold",sans-serif;
+    font-size: 90%;
+    transform: translateY(200px);
+}
+.box:hover .contenido p {
+    transform: translateY(0);
+    transition-delay: .6s;
+}
+@media (max-width: 500px) {
+    .GaleriaTitulo h1 {
+        font-size: 150%;
+    } 
+    .GaleriaTitulo p{
+        font-size: 80%;
+    }
+    .box {
+        width: 270px;
+        height: 220px;
+    }
+    .contenido h2 {
+        margin-bottom: 2%;
+        font-size: 90%;
+    }
+    .contenido p {
+        margin-bottom: .6%;
+        font-size: 60%;
+    }
+}
 /*============FOOTER==============*/
 
 footer{
     width: 100%;
-    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
+    background-image: url(../img/fondos/mecanicoFondo.jpg);
     color: white; 
     display: block;
 }

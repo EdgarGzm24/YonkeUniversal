@@ -51,19 +51,24 @@
 
                          move_uploaded_file($_FILES["foto_$i"]["tmp_name"], $nueva_direccion);
 
-                        $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
+                        $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,550,800);
                         imagejpeg($imagen_optimizada, $nueva_direccion);
+                        imagedestroy($imagen_optimizada);
 
                         $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
                         $stmt->bind_param('isi', $idAuto,$nuevo_nombre,$i);
                         $stmt->execute();
+                        
+                    } else {
+                        echo  json_encode(['titulo'=>'Los datos fueron subidos pero no las imagenes!',
+                                               'mensaje'=>'Solo se permiten archivos JPG y PNG',
+                                               'estado'=>false]);
                     }
-                }
+                } 
             }
-            echo  json_encode(['mensaje'=>'Se subieron los datos correctamente!','estado'=>true]);
+            echo  json_encode(['titulo'=>'Se subieron los datos correctamente!',
+                                           'estado'=>true]);
             $conexion->close();
-        } else {
-            echo  json_encode(['mensaje'=>'Hubo un error al subir los datos!','estado'=>false]);
         }
     }
 

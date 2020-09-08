@@ -35,43 +35,57 @@
                     if ($_FILES['foto_'.$i]['type']=='image/png' || $_FILES['foto_'.$i]['type']=='image/jpeg') {
 
                         $stmt_select = $conexion->prepare("SELECT nombre FROM imagenes WHERE idAuto = ? AND numero = ?");
-                        $stmt_select->bind_Param('ii', $_POST['id_registro'], $i);
+                        $stmt_select->bind_Param('ii', $idAuto, $i);
                         $stmt_select->execute();
 
                         $resultado = $stmt_select->get_result();
                         $imgRow = $resultado->fetch_assoc();
 
-                        $extension = pathinfo($_FILES["foto_$i"]["name"], PATHINFO_EXTENSION);
-                        $nuevo_nombre = "auto_".date("Ymd_his")."$i.".$extension;
-                        $nueva_direccion = $carpeta.basename($nuevo_nombre);
+                        if($_FILES['foto_'.$i]['name'] !== $imgRow['nombre']){
+                            
+                            $extension = pathinfo($_FILES["foto_$i"]["name"], PATHINFO_EXTENSION);
+                            $nuevo_nombre = "auto_".date("Ymd_his")."$i.".$extension;
+                            $nueva_direccion = $carpeta.basename($nuevo_nombre);
 
-                         move_uploaded_file($_FILES["foto_$i"]["tmp_name"], $nueva_direccion);
+                             move_uploaded_file($_FILES["foto_$i"]["tmp_name"], $nueva_direccion);
 
-                        $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,700,700);
-                        imagejpeg($imagen_optimizada, $nueva_direccion);
+                            $imagen_optimizada = redimensionar_imagen($nuevo_nombre,$nueva_direccion,550,800);
+                            imagejpeg($imagen_optimizada, $nueva_direccion);
+                            imagedestroy($imagen_optimizada);
 
+                            if($resultado->num_rows == 0){
+                                $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
+                                $stmt->bind_param('isi', $idAuto,$nuevo_nombre,$i);
+                                $stmt->execute();
+                            }
 
-                        if($resultado->num_rows == 0){
-                            $stmt = $conexion->prepare("INSERT INTO imagenes (idAuto,nombre,numero) VALUES (?, ?, ?)");
-                            $stmt->bind_param('isi', $idAuto,$nuevo_nombre,$i);
-                            $stmt->execute();
+                            if($resultado->num_rows !== 0){
+
+                                eliminarFoto($carpeta.$imgRow['nombre']);
+
+                                $stmt = $conexion->prepare("UPDATE imagenes SET nombre=? WHERE idAuto=? AND numero = ?");
+                                $stmt->bind_param('sii', $nuevo_nombre, $idAuto, $i);
+                                $stmt->execute();
+                            }
+                            
+                            echo  json_encode(['titulo'=>'Se actualizaron los datos correctamente!',
+                                               'estado'=>true]);
+                        } else {
+                            echo  json_encode(['titulo'=>'Los datos fueron actualizados pero no las imagenes!',
+                                               'mensaje'=>'No se permiten imagenes duplicadas',
+                                               'estado'=>false]);
                         }
-
-                        if($resultado->num_rows !== 0){
-
-                            eliminarFoto($carpeta.$imgRow['nombre']);
-
-                            $stmt = $conexion->prepare("UPDATE imagenes SET nombre=? WHERE idAuto=? AND numero = ?");
-                            $stmt->bind_param('sii', $nuevo_nombre, $idAuto, $i);
-                            $stmt->execute();
-                        }
+                    } else {
+                        echo  json_encode(['titulo'=>'Los datos fueron actualizados pero no las imagenes!',
+                                               'mensaje'=>'Solo se permiten archivos JPG y PNG',
+                                               'estado'=>false]);
                     }
                 }
             }
-            echo  json_encode(['mensaje'=>'Se actualizaron los datos correctamente!','estado'=>true]);
             $conexion->close();
         } else {
-            echo  json_encode(['mensaje'=>'Hubo un error al actualizar los datos!','estado'=>false]);
+            echo  json_encode(['titulo'=>'Hubo un error al actualizar los datos!',
+                               'estado'=>false]);
         }
     }
 

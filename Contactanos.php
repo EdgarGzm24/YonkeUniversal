@@ -23,7 +23,7 @@
         <header class="header">
           <div class="contHeader">
             <div class="logo">
-               <a class="navbar-brand" href="/"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
+               <a class="navbar-brand" href="Index.php"><img class="logoPrincipal" src="img/imagesPage/logoPerron.png"></a>
             </div>
             <div class="informacion">
                <div class="columnaDir">
@@ -32,7 +32,7 @@
                </div>
                <div class="columnaHorario">
                     <i class="far fa-clock"></i>
-                    <p>Lun - Sab 8:00 AM - 7:00 PM <br>
+                    <p>Lun - Sab 8:00 AM - 5:00 PM <br>
                         Domingo CERRADO</p>
                </div>
                <div class="columnaTel">
@@ -63,10 +63,10 @@
               <?php } ?>
 
               <li class="nav-item">
-                <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="Index.php">Inicio <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Buscador.php">Autos</a>
+                <a class="nav-link" href="Autos.php">Autos</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="Contactanos.php">Contacto</a>
@@ -79,21 +79,21 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/imagesPage/1.png" class="d-block w-100" alt="...">
+              <img src="img/fondos/1.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="img/imagesPage/2.png" class="d-block w-100" alt="...">
+              <img src="img/fondos/2.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="img/imagesPage/3.png" class="d-block w-100" alt="...">
+              <img src="img/fondos/3.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5>Contactanos</h5>
                 <p>DIRECCION, TELEFONO &amp; HORARIO</p>
@@ -142,8 +142,8 @@
                     <h2>Links rapidos</h2>
                     <div class="borde"></div>
                     <ul>
-                        <a href="../"><li><i class="fas fa-angle-right"></i>Inicio</li></a>
-                        <a href="../YonkeUniversal/Buscador.php"><li><i class="fas fa-angle-right"></i>Autos</li></a>
+                        <a href="Index.php"><li><i class="fas fa-angle-right"></i>Inicio</li></a>
+                        <a href="../YonkeUniversal/Autos.php"><li><i class="fas fa-angle-right"></i>Autos</li></a>
                         <a href="../YonkeUniversal/Contactanos.php"><li><i class="fas fa-angle-right"></i>Contacto</li></a>
                         
                         <?php if(isset($_SESSION['user'])){ ?>

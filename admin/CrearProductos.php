@@ -7,7 +7,7 @@
     $usuario = $_SESSION['user'];
 
     if(!isset($usuario)){
-        header("location: ../");
+        header("location: ../admin/");
     }
 
     if(isset($_GET['edit_id']) && !empty($_GET['edit_id'])){
@@ -73,10 +73,10 @@
                 </li>
                 <li class="menu-title">Pagina principal</li><!-- /.menu-title -->
                 <li class="menu-item">
-                    <a href="/"><i class="menu-icon fas fa-home"></i>Inicio </a>
+                    <a href="../"><i class="menu-icon fas fa-home"></i>Inicio </a>
                 </li>
                 <li class="menu-item">
-                    <a href="../Buscador.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
+                    <a href="../Autos.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
                 </li>
                 <li class="menu-item">
                     <a href="../Contactanos.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
@@ -121,7 +121,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-title">
-                        <h4 class="box-title">Subir autos </h4>
+                        <h4 class="box-title">Añadir autos </h4>
                     </div>
                     <div class="card-body">
                             <form method="post" enctype="multipart/form-data" id="frmAjax">
@@ -164,7 +164,9 @@
                                     <label for="file-1"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                         <img src="<?= $foto1 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa principal</span>
+                                        <?php if(empty($numeros[0])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa principal</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -172,7 +174,9 @@
                                     <label for="file-2"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                          <img src="<?= $foto2 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php if(empty($numeros[1])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -180,7 +184,9 @@
                                     <label for="file-3"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                         <img src="<?= $foto3 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php if(empty($numeros[2])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -188,7 +194,9 @@
                                     <label for="file-4"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                         <img src="<?= $foto4 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php if(empty($numeros[3])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -196,7 +204,9 @@
                                     <label for="file-5"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                         <img src="<?= $foto5 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php if(empty($numeros[4])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -204,17 +214,19 @@
                                     <label for="file-6"><i class="far fa-file-image"></i><span class="inputfileCustom">Agrega una foto</span></label>
                                     <div class="image-preview">
                                         <img src="<?= $foto6 ?>" alt="" class="image-preview__img">
-                                        <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php if(empty($numeros[5])){ ?>
+                                            <span class="image-preview__txt" id="image-preview__txt">Vista previa secundaria</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                               </div>
                               
-                              <input type="hidden" name="submit" id="Guardar">
-                              <input type="submit" id="btnGuardar" class="btn btn-dark">
-                              
                               <?php if(isset($_GET['edit_id'])) { ?>
                                   <input type="hidden" name="update" id="Actualizar">
                                   <input type="submit" value="Actualizar" id="btnActuaz" class="btn btn-primary">
+                              <?php } else {?>
+                                  <input type="hidden" name="submit" id="Guardar">
+                                  <input type="submit" id="btnGuardar" class="btn btn-dark">
                               <?php } ?>
                             </form>
                             

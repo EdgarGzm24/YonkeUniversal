@@ -904,6 +904,13 @@ header .form-inline .search-form.close {
 .btn-buscar i {
     font-size: 20px;
 }
+.cargando {
+    width: 50px; 
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    display: block;
+}
 
 /* Stats Table */
 .table-stats table {
@@ -915,7 +922,7 @@ header .form-inline .search-form.close {
 .table-stats table th,
 .table-stats table td {
     border: none;
-    border-bottom: 1px solid #e8e9ef;
+    border-bottom: 10px solid #e8e9ef;
     color: #868e96;
     font-size: 12px;
     font-weight: normal;
@@ -943,7 +950,7 @@ header .form-inline .search-form.close {
 
 /* Footer */
 footer.site-footer {
-    padding: 0 1.875em;
+    padding: 0 2em;
 }
 footer.site-footer .footer-inner {
     background-color: black;

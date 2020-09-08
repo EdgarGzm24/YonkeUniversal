@@ -30,17 +30,17 @@
                         <td class='serial'>".$fila['id']."</td>
     					<td class='avatar'>
                             <div class='round-img'>
-                                <a href='' ><img src='../img/autos/".$fila['id']."/".$fila['nombre']."' ></a>
+                                <img src='../img/autos/".$fila['id']."/".$fila['nombre']."'>
                             </div>
                         </td>
-    					
-                        <td>Motor: ".$fila['Motor']."<br>Transmision: ".$fila['transmision']."<br>Cilindros: ".$fila['cilindros']."</td>
                         
                         <td>".$fila['marca']."</td>
                         
     					<td>".$fila['modelo']."</td>
     					
                         <td>".$fila['anio']."</td>
+                        
+                        <td>Motor: ".$fila['Motor']."<br>Transmision: ".$fila['transmision']."<br>Cilindros: ".$fila['cilindros']."</td>
                         
                         <td><a href='crearProductos.php?edit_id=".$fila['id']."' class='btn btn-dark'><i class='fas fa-edit'></i></a>
                             <button type='button' class='btn btn-danger' onclick='AlertaEliminacion(".$fila['id'].")'><i class='fas fa-trash-alt'></i></button></td>
@@ -52,7 +52,9 @@
     	$salida.="<tr>
                     <td></td>
                     <td></td>
+                    <td></td>
                     <td><strong>No se encontraron coincidencias</strong></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>";

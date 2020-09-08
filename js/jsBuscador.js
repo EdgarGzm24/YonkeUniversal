@@ -6,6 +6,9 @@ function buscar_datos(consulta){
 		type: 'POST' ,
 		dataType: 'html',
 		data: {consulta: consulta},
+        beforeSend:function(data){
+            $('#seccionAutos').html('<img class="cargando" src="img/imagesPage/loading-45.gif" alt="Cargando..."/>');
+        },
 	})
 	.done(function(respuesta){
 		$("#seccionAutos").html(respuesta);

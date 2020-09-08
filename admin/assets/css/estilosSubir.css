@@ -991,8 +991,10 @@ header .form-inline .search-form.close {
     color: #cccccc;
 }
 .image-preview__img {
-    display: none;
     width: 100%;
+}
+.image-preview__txt{
+    position: absolute;
 }
 #process{
     display: none;

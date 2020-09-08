@@ -62,7 +62,7 @@ body::-webkit-scrollbar-thumb {
 	text-align:center;
     font-size:190%;
 	box-shadow: 2px 2px 3px #252525;
-    z-index:100;
+    z-index:2000;
 }
 .float:hover {
 	text-decoration: none;
@@ -347,7 +347,8 @@ body::-webkit-scrollbar-thumb {
 
 .seccionAutos {
     width: 100%;
-    max-width: 1300px;    
+    max-width: 1300px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -410,6 +411,14 @@ body::-webkit-scrollbar-thumb {
     color: white;
     background-color: #343536;
 }
+
+.cargando {
+    width: 80px; 
+    top: 100%;
+    left: 50%;
+    display: block;
+}
+
 @media(max-width: 770px){
     .form-box {
         max-width: 600px;
@@ -458,7 +467,7 @@ body::-webkit-scrollbar-thumb {
         height: 320px;
     }
     .img-box{
-        height: 130px;
+        height: 120px;
     }
     .seccionAutos .card h4 {
         font-size: 90%;
@@ -543,7 +552,7 @@ ol{
         padding-left: 25px !important;
     }
     .btn-close-popup{
-        padding: .8% 1.8%;
+        padding: 1% 2.5%;
         top:-3%;
         font-size: 130%;
     }
@@ -581,7 +590,7 @@ ol{
 
 footer{
     width: 100%;
-    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
+    background-image: url(../img/fondos/mecanicoFondo.jpg);
     color: white; 
     display: block;
 }

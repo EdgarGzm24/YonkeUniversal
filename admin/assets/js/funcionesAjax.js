@@ -8,6 +8,9 @@ function buscar_datos(consulta){
 		type: 'POST' ,
 		dataType: 'html',
 		data: {consulta: consulta},
+        beforeSend:function(data){
+            $('#autos').html('<img class="cargando" src="images/loading-45.gif" alt="Cargando..."/>');
+        },
 	})
 	.done(function(respuesta){
 		$("#autos").html(respuesta);
@@ -103,7 +106,7 @@ function progress_bar_process(porcetaje, timer, r){
         if(r['estado']){
                 Swal.fire({
                 icon: 'success',
-                title: r['mensaje'],
+                title: r['titulo'],
                 showConfirmButton: false,
                 timer: 4000,
                 background: '#2B2B2B' 
@@ -111,9 +114,10 @@ function progress_bar_process(porcetaje, timer, r){
             }else{
                 Swal.fire({
                 icon: 'error',
-                title: r['mensaje'],
+                title: r['titulo'],
+                text: r['mensaje'],
                 showConfirmButton: false,
-                timer: 4000,
+                timer: 5000,
                 background: '#2B2B2B' 
             }); 
             }
@@ -154,7 +158,7 @@ function eliminarDatos(id) {
                     icon: 'success',
                     title: 'El auto ha sido eliminado exitosamente!',
                     showConfirmButton: false,
-                    timer: 4000,
+                    timer: 2000,
                     background: '#2B2B2B' 
                 })
             }

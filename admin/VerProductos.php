@@ -43,7 +43,7 @@ if(!isset($usuario)){
                     <a href="../"><i class="menu-icon fas fa-home"></i>Inicio </a>
                 </li>
                 <li class="menu-item">
-                    <a href="../Buscador.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
+                    <a href="../Autos.php"><i class="menu-icon fas fa-search"></i>Buscador </a>
                 </li>
                 <li class="menu-item">
                     <a href="../contactanos.php"><i class="menu-icon fas fa-phone-alt"></i>Contactanos </a>
@@ -110,10 +110,10 @@ if(!isset($usuario)){
                                             <tr>
                                                 <th class="serial">#</th>
                                                 <th class="avatar">Auto</th>
-                                                <th>Descripcion</th>
                                                 <th>Marca</th>
                                                 <th>Modelo</th>
                                                 <th>Año</th>
+                                                <th>Descripcion</th>
                                                 <th>Opciones</th>
                                             </tr>
                                         </thead>

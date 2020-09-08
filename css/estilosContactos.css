@@ -278,7 +278,7 @@ ul {
 
 /* CONTACT INFO */
 .contact-info {
-    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
+    background-image: url(../img/fondos/mecanicoFondo.jpg);
     color: white;
     height: 600px;
     padding: 7%;
@@ -311,7 +311,7 @@ ul {
 
 footer{
     width: 100%;
-    background-image: url(../img/imagesPage/mecanicoFondo.jpg);
+    background-image: url(../img/fondos/mecanicoFondo.jpg);
     color: white; 
     display: block;
 }
