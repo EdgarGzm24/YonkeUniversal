@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2020 a las 04:26:24
+-- Tiempo de generación: 08-09-2020 a las 23:06:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -51,16 +51,9 @@ INSERT INTO `imagenes` (`idImagen`, `idAuto`, `nombre`, `numero`) VALUES
 (43, 67, 'auto_20200901_0833052.jpg', 2),
 (44, 67, 'auto_20200901_0833053.jpg', 3),
 (45, 67, 'auto_20200901_0833054.jpg', 4),
-(46, 78, 'auto_20200905_1005141.png', 1),
-(47, 79, 'auto_20200902_1025251.png', 1),
-(48, 80, 'auto_20200902_1025411.png', 1),
 (49, 81, 'auto_20200905_0950561.jpg', 1),
 (50, 82, 'auto_20200905_1021431.jpg', 1),
-(51, 83, 'auto_20200904_0814331.jpg', 1),
-(52, 84, 'auto_20200904_0816261.jpg', 1),
-(53, 85, 'auto_20200905_1121021.jpg', 1),
-(54, 86, 'auto_20200908_0424361.jpg', 1),
-(55, 87, 'auto_20200907_0734271.jpg', 1);
+(51, 83, 'auto_20200904_0814331.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -90,16 +83,9 @@ INSERT INTO `tbautos` (`id`, `usuario`, `nombreauto`, `marca`, `modelo`, `anio`,
 (65, 1, 'Nissan Altima 2012', 'Nissan', 'Altima', '2012', 'Destruido', 6, 'SVT 6CIL', 'Electrica', '2020-08-21 01:40:52'),
 (66, 1, 'Nissan Versa 2013', 'Nissan', 'Versa', '2013', 'Churido', 6, 'SVT 6 CIL', 'Automatica', '2020-08-21 01:49:02'),
 (67, 1, 'Ford Mustang 1967', 'Ford', 'Mustang', '1967', 'Explotado', 6, 'Desconocido', 'Combustion interna', '2020-08-21 01:49:48'),
-(78, 1, 'Nissan Versa 2012', 'Quos eaque aliquam m', 'Repellendus Ab veni', '91', 'Esse molestiae saepe', 0, 'Quia eius exercitati', 'Reiciendis libero su', '2020-09-02 08:24:47'),
-(79, 1, 'Nissan Versa 2012', 'Volupas cillum eos', 'Excepteur atque alia', '14', 'Soluta ut Nam harum', 0, 'Earum molestias cons', 'Recusandae Mollit c', '2020-09-02 08:25:25'),
-(80, 1, 'Nissan Versa 2012', 'Omis consequat Sed', 'Et architecto facere', '66', 'Rerum laudantium fu', 0, 'Duis quia sit nihil', 'Dolores aspernatur m', '2020-09-02 08:25:41'),
 (81, 1, 'Consectetu Ut mptas ve 38', 'Consectetu', 'Ut mptas ve', '38', 'magni null', 0, 'Tetium d', 'Luamut po', '2020-09-04 05:48:49'),
 (82, 1, 'Archiidem hi Sunt ut excepturi en 8', 'Archiidem hi', 'Sunt ut excepturi en', '8', 'Magna rerum officiis', 0, 'Libero laborum Hic', 'Corrupti voluptas a', '2020-09-04 05:50:37'),
-(83, 1, 'Error hfugiat r Dolores optio et ma 53', 'Error hfugiat r', 'Dolores optio et ma', '53', 'Quae velit magni in', 0, 'Et in esse nesciunt', 'Cillum ut earum aut', '2020-09-04 06:14:33'),
-(84, 1, 'Quis magnam con Quis aut qui a accus 10', 'Quis magnam con', 'Quis aut qui a accus', '10', 'Dolore quo qui aut c', 0, 'Cupiditate totam ea', 'Provident porro est', '2020-09-04 06:16:25'),
-(85, 1, 'Voluptate elit a Dolor in omnis qui v 54', 'Voluptate elit a', 'Dolor in omnis qui v', '54', 'Ipsam qui omnis est', 0, 'Quo eius modi sit e', 'Recusandae Aut ipsa', '2020-09-04 06:21:55'),
-(86, 1, 'Iure aperiam Tempor eu assumenda  5', 'Iure aperiam', 'Tempor eu assumenda', '5', 'Impedit pariatur I', 0, 'Maxime voluptatem I', 'Consequat Quam exer', '2020-09-04 06:26:34'),
-(87, 1, 'Exercitation res Esse in soluta even 8', 'Exercitation res', 'Esse in soluta even', '8', 'Sint alias quas vita', 0, 'Officia pariatur Re', 'Et asperiores aut la', '2020-09-05 07:53:38');
+(83, 1, 'Error hfugiat r Dolores optio et ma 53', 'Error hfugiat r', 'Dolores optio et ma', '53', 'Quae velit magni in', 0, 'Et in esse nesciunt', 'Cillum ut earum aut', '2020-09-04 06:14:33');
 
 -- --------------------------------------------------------
 
@@ -154,13 +140,13 @@ ALTER TABLE `tbusuarios`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de la tabla `tbautos`
 --
 ALTER TABLE `tbautos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `tbusuarios`
