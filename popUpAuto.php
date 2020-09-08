@@ -63,8 +63,7 @@ echo "
                 <p><strong>Cilindros:</strong><br> ".$info['cilindros']."</p>
                 <p><strong>Motor:</strong><br> ".$info['Motor']."</p>
                 <p><strong>Transmision:</strong><br> ".$info['transmision']."</p>
-                <p><strong>¿Te interesa una pieza? Mandanos un whatsApp. <br> 
-                           Telefono: 646 260 41 30.</strong></p>
+                
           </div>
         </div>
       </div>
